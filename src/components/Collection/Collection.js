@@ -11,9 +11,14 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 export default function Collection() {
-  const [direction, setDirection] = useState('');
+  const [direction, setDirection] = useState({
+    div1: '',
+    div2: '',
+    div3: '',
+    div4: '',
+  });
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e, index) => {
     const rect = e.target.getBoundingClientRect();
     const x = e.clientX - rect.left; // Mouse X coordinate relative to the hovered div
     const y = e.clientY - rect.top; // Mouse Y coordinate relative to the hovered div
@@ -24,20 +29,31 @@ export default function Collection() {
     const threshold = 50; // Adjust threshold as needed
 
     if (y < threshold) {
-      setDirection('top');
+      setDirection(prevState => ({
+        ...prevState,
+        ['div' + index]: 'top'
+      }));
     } else if (y > height - threshold) {
-      setDirection('bottom');
+      setDirection(prevState => ({
+        ...prevState,
+        ['div' + index]: 'bottom'
+      }));
     } else if (x < threshold) {
-      setDirection('left');
+      setDirection(prevState => ({
+        ...prevState,
+        ['div' + index]: 'left'
+      }));
     } else if (x > width - threshold) {
-      setDirection('right');
+      setDirection(prevState => ({
+        ...prevState,
+        ['div' + index]: 'right'
+      }));
     } else {
-      setDirection('');
+      // setDirection(prevState => ({
+      //   ...prevState,
+      //   ['div' + index]: ''
+      // }));
     }
-  };
-
-  const handleMouseLeave = () => {
-    setDirection('');
   };
 
   return (
@@ -45,20 +61,15 @@ export default function Collection() {
       <Container fluid="md">
         <Row className="mb-3">
           <Col xs={4}>
-            <div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={cx('collection-item')}>
-              <div className={cx('overlay', 'top')}>
-                <p>{direction}</p>
-              </div>
-              <img src="https://beautycare.ththeme.net/wp-content/uploads/2022/04/bnv1-2.jpg" alt="2" />
+            <div onMouseMove={(e) => handleMouseMove(e, 1)} className={cx('collection-item')}>
+              <div className={cx('overlay', direction.div1)}></div>
+              <img src="https://beautycare.ththeme.net/wp-content/uploads/2022/04/bnv1-2.jpg" />
             </div>
           </Col>
           <Col xs={8}>
-            <div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={cx('collection-item')}>
-              <div className={cx('overlay', 'right')}></div>
-
-              <img
-                src="https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty_slider_14-1200x588.jpg"
-                alt="2"
+            <div onMouseMove={(e) => handleMouseMove(e, 2)} className={cx('collection-item')}>
+              <div className={cx('overlay', direction.div2)}></div>
+              <img src="https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty_slider_14-1200x588.jpg"
               />
             </div>
           </Col>
@@ -66,23 +77,20 @@ export default function Collection() {
 
         <Row className="mb-3">
           <Col xs={8}>
-            <div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={cx('collection-item')}>
-              <div className={cx('overlay', 'left')}></div>
-
-              <img
-                src="https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty_slider_14-1200x588.jpg"
-                alt="2"
+            <div onMouseMove={(e) => handleMouseMove(e, 3)} className={cx('collection-item')}>
+              <div className={cx('overlay', direction.div3)}></div>
+              <img src="https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty_slider_14-1200x588.jpg"
               />
             </div>
           </Col>
           <Col xs={4}>
-            <div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={cx('collection-item')}>
-              <div className={cx('overlay', 'bottom')}></div>
-              <img src="https://beautycare.ththeme.net/wp-content/uploads/2022/04/bnv1-2.jpg" alt="2" />
+            <div onMouseMove={(e) => handleMouseMove(e, 4)} className={cx('collection-item')}>
+              <div className={cx('overlay', direction.div4)}></div>
+              <img src="https://beautycare.ththeme.net/wp-content/uploads/2022/04/bnv1-2.jpg" />
             </div>
           </Col>
         </Row>
       </Container>
-    </div>
+    </div >
   );
 }
