@@ -1,0 +1,106 @@
+$height-header-contact: 44px;
+$height-header: 120px;
+
+.header-contact {
+  background-color: var(--primary-color);
+  height: $height-header-contact;
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $height-header-contact;
+    .contact {
+      display: flex;
+      .contact-item {
+        margin-right: 16px;
+        color: var(--white-color);
+        span {
+          margin-left: 4px;
+        }
+      }
+    }
+    .info {
+      display: flex;
+      .info-item {
+        color: var(--white-color);
+        margin-left: 16px;
+      }
+    }
+  }
+}
+
+.header {
+  background-color: var(--white-color);
+  height: $height-header;
+  display: flex;
+  align-items: center;
+  padding: 15px 10px 25px 10px;
+
+  .header-logo {
+    margin-bottom: 0;
+    font-size: 60px;
+    font-family: 'Great Vibes', cursive;
+  }
+
+  .btn-drop-down {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    position: relative;
+    padding: 0.2em 0;
+
+    &:hover {
+      color: var(--text-color);
+      &::after {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0.1em;
+      background-color: var(--text-color);
+      transition: opacity 300ms, transform 300ms;
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    &:focus {
+      &::after {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    .nav-list-parent {
+      a {
+        width: 100%;
+        &::after {
+          content: '';
+          border: 0;
+          position: absolute;
+          opacity: 0;
+          display: none !important;
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: -17px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        background-color: transparent;
+      }
+    }
+
+    .span-icons {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0 4px;
+    }
+  }
+}

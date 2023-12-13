@@ -1,0 +1,54 @@
+.wrapper {
+  height: 100%;
+  .collection-item {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    &:hover {
+      .overlay {
+        z-index: 2;
+        opacity: 1;
+        &.top {
+          top: 0;
+        }
+        &.right {
+          right: 0;
+        }
+        &.left {
+          left: 0;
+        }
+        &.bottom {
+          bottom: 0;
+        }
+      }
+    }
+
+    .overlay {
+      transition: all 0.3s ease-out 0s;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 2;
+      &.top {
+        top: -100%;
+      }
+      &.right {
+        right: -100%;
+      }
+      &.left {
+        left: -100%;
+      }
+      &.bottom {
+        bottom: -100%;
+      }
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
