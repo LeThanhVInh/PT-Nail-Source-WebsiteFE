@@ -1,0 +1,49 @@
+@import '@/app/import';
+
+.wrapper {
+  height: 60%;
+  position: relative;
+  .bg-container {
+    position: relative;
+    height: 100%;
+    background-color: #fafafa;
+    background-image: url('http://beautycare.ththeme.net/wp-content/uploads/2022/04/beauty_slider_6.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: brightness(0.6);
+    width: 100%;
+  }
+
+  .info {
+    color: var(--white-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+
+    @include tablet {
+      width: 80% !important;
+    }
+
+    @include mobile {
+      width: 100% !important;
+    }
+
+    .title {
+      font-size: 60px;
+      font-family: 'Great Vibes', cursive;
+      @include mobile {
+        font-size: 50px;
+      }
+    }
+    .desc {
+      font-size: 15px;
+      font-weight: 400;
+      margin: 40px 0;
+    }
+  }
+}

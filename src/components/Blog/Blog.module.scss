@@ -1,0 +1,126 @@
+@import '@/app/import';
+.wrapper {
+  margin: 75px 0;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header-title {
+      font-size: 60px;
+      font-family: 'Great Vibes', cursive;
+      line-height: 60px;
+      margin: 0;
+    }
+    .view-more-action {
+      height: 100%;
+      button {
+        min-width: 200px;
+        border-radius: 999px;
+        padding: 12px 35px;
+        width: 128px;
+        text-align: center;
+        border: 1px solid var(--primary-color);
+        background-color: transparent;
+        color: var(--primary-color);
+
+        transition: all 0.3s ease-out 0s;
+        &:hover {
+          background-color: var(--primary-color);
+          color: var(--white-color);
+        }
+      }
+    }
+  }
+
+  .container {
+    margin-top: 20px;
+    .mySwiper {
+      --swiper-pagination-color: var(--primary-color);
+      --swiper-pagination-bullet-size: 10px;
+      --swiper-pagination-bullet-width: 10px;
+      --swiper-pagination-bullet-height: 10px;
+      --swiper-pagination-bullet-inactive-color: #000;
+      --swiper-pagination-bullet-inactive-opacity: 0.2;
+      --swiper-pagination-bullet-opacity: 1;
+      --swiper-pagination-bullet-horizontal-gap: 4px;
+      --swiper-pagination-bullet-vertical-gap: 6px;
+      --swiper-pagination-bullet-border-radius: 50%;
+      --swiper-pagination-bottom: 0;
+
+      .blog {
+        display: flex;
+        justify-content: space-between;
+        // width: 100%;
+        flex-wrap: wrap;
+        .blog-wrapper {
+          margin-bottom: 20px;
+          height: 500px;
+          max-height: 100%;
+          box-shadow: var(--box-shadow);
+          background-color: var(--white-item-bg);
+          @include x-mobile {
+            height: unset;
+          }
+        }
+        .blog-thumb {
+          position: relative;
+          overflow: hidden;
+          &:hover {
+            img {
+              transition: all 0.5s ease-out 0s;
+              filter: brightness(0.6);
+              transform: scale(1.2);
+              transform-origin: 50% 50%;
+            }
+          }
+          img {
+            transition: all 0.3s ease-out 0s;
+            width: 100%;
+            height: 80%;
+            object-fit: contain;
+          }
+        }
+
+        .blog-info {
+          text-align: center;
+          padding: 20px 10px;
+
+          .author {
+            color: var(--grey-color);
+            font-size: 15px;
+          }
+          .title {
+            font-size: 18px;
+            color: var(--text-color);
+            font-weight: 600;
+          }
+          .description {
+            font-size: 15px;
+            color: var(--desc-text);
+          }
+          .btn-action {
+            margin-top: 30px;
+            height: 100%;
+            button {
+              min-width: 180px;
+              border-radius: 999px;
+              padding: 8px 35px;
+              text-align: center;
+              border: 1px solid var(--primary-color);
+              background-color: var(--primary-color);
+              color: var(--white-color);
+              transition: all 0.3s ease-out 0s;
+              font-size: 15px;
+              &:hover {
+                background-color: transparent;
+                color: var(--primary-color);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,20 +1,21 @@
 'use client';
 
 import { useState } from 'react';
+
 import { Container } from 'react-bootstrap';
-import styles from './BestSeller.module.scss';
+import styles from './NewProducts.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-export default function BestSeller() {
+export default function NewProducts() {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleItemClick = (index) => {
     setSelectedItem(index);
   };
 
-  const listData = ['All', 'Lipstick', 'Makeup Bases', 'Nail Polish', 'Skin Care'];
+  const listData = ['Trending', 'Featured', 'Makeup On sale', 'Top rate'];
   const listItem = [
     {
       id: 1,
@@ -27,13 +28,13 @@ export default function BestSeller() {
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-08-380x380.jpg',
       title: 'Natural Lotion',
       price: '55',
+      discount: '35',
     },
     {
       id: 3,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-16-380x380.jpg',
       title: 'Beauty Cream',
       price: '60',
-      discount: '15',
     },
     {
       id: 4,
@@ -46,6 +47,7 @@ export default function BestSeller() {
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
       title: 'Lip Glosssss',
       price: '66',
+      discount: '90',
     },
   ];
 
@@ -53,7 +55,7 @@ export default function BestSeller() {
     <div className={cx('wrapper')}>
       <Container fluid="md">
         <div className={cx('header')}>
-          <h2 className={cx('header-title')}>Best Seller</h2>
+          <h2 className={cx('header-title')}>New Products</h2>
           <div className={cx('categories')}>
             <ul className={cx('list')}>
               {listData.map((item, index) => (

@@ -1,0 +1,39 @@
+@import 'bootstrap';
+@import '@/app/import';
+
+.btn-primary {
+  height: 60px;
+  width: 170px;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  background-color: var(--primary-color);
+  border: none;
+  color: var(--white-color);
+  @include mobile {
+    width: 100px;
+  }
+  &:hover {
+    background-color: var(--primary-bold);
+    transition: all 0.3s ease-out 0s;
+  }
+}
+
+.input-group {
+  width: 100%;
+  .form-control {
+    background-color: var(--white-color);
+    border-radius: 999px;
+    height: 60px;
+    color: var(--text-color);
+    &::placeholder {
+      color: var(--grey-color);
+    }
+    .input-group-append {
+      color: var(--grey-color);
+    }
+    &:focus {
+      border-color: var(--primary-bold);
+      box-shadow: 1px 1px 1px var(--primary-bold);
+    }
+  }
+}

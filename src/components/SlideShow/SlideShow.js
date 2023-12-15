@@ -3,10 +3,13 @@ import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { EffectFade, Pagination } from 'swiper/modules';
 import 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+
+import 'swiper/css/effect-fade';
+import './styles.scss';
 
 import slider1 from '@/assets/img/slider_1.jpg';
 import slider2 from '@/assets/img/slider_2.jpg';
@@ -19,11 +22,12 @@ const cx = classNames.bind(styles);
 export default function SlideShow() {
   return (
     <Swiper
+      effect={'fade'}
       spaceBetween={30}
       pagination={{
         clickable: true,
       }}
-      modules={[Pagination]}
+      modules={[EffectFade, Pagination]}
       className={cx('mySwiper')}
       style={{
         '--swiper-pagination-color': 'var(--primary-color)',

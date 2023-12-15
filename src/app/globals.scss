@@ -3,13 +3,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 :root {
   --primary-color: #ff6c87;
+  --primary-light: #ff879d;
+  --primary-bold: #ef4866;
   --white-color: #fff;
   --text-color: #333;
+  --gold-color: #e6de11;
   --text-grey: #666;
-  --box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+  --grey-color: #999;
+  --desc-text: #555;
+  --box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.05);
+  --box-shadow-btn: 0 5px 5px 0 rgba(0, 0, 0, 0.15);
   --box-shadow-item: 0 0px 20px 0 rgba(0, 0, 0, 0.1);
+  --text-shadow: 0 0 1px #0000004a;
   --grey-bg: #f5f6f9;
   --white-item-bg: #fdfbfc;
+  --badge-bg: #0d9a18;
 }
 
 /* // @media (prefers-color-scheme: dark) {
