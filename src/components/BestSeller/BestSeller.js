@@ -2,13 +2,16 @@
 
 import { useState } from 'react';
 import { Container } from 'react-bootstrap';
+import { useRouter } from 'next/navigation';
+
 import styles from './BestSeller.module.scss';
 import classNames from 'classnames/bind';
-
 const cx = classNames.bind(styles);
 
 export default function BestSeller() {
   const [selectedItem, setSelectedItem] = useState(null);
+
+  const router = useRouter();
 
   const handleItemClick = (index) => {
     setSelectedItem(index);
@@ -21,12 +24,14 @@ export default function BestSeller() {
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-01-380x380.jpg',
       title: 'Body Lotions',
       price: '50',
+      categorize: 'Lipstick',
     },
     {
       id: 2,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-08-380x380.jpg',
       title: 'Natural Lotion',
       price: '55',
+      categorize: 'Makeup Bases',
     },
     {
       id: 3,
@@ -34,18 +39,21 @@ export default function BestSeller() {
       title: 'Beauty Cream',
       price: '60',
       discount: '15',
+      categorize: 'Nail Polish',
     },
     {
       id: 4,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
       title: 'Lip Gloss',
       price: '70',
+      categorize: 'Skin Care',
     },
     {
       id: 5,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
       title: 'Lip Glosssss',
       price: '66',
+      categorize: 'Lipstick',
     },
   ];
 
@@ -73,7 +81,7 @@ export default function BestSeller() {
             <div className={cx('product-wrapper')} key={item.id}>
               <div className={cx('product-thumb')}>
                 <div className={cx('product-action')}>
-                  <a>
+                  <a onClick={() => console.log('a')}>
                     <i className="bi bi-cart2"></i>
                   </a>
                   <a>
@@ -91,7 +99,7 @@ export default function BestSeller() {
                     <p>-{item.discount}%</p>
                   </div>
                 )}
-                <img src={item.imgUrl} alt={item.title} />
+                <img src={item.imgUrl} alt={item.title} onClick={() => router.push(`/product/${item.id}`)} />
               </div>
 
               <div className={cx('product-info')}>

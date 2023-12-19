@@ -54,7 +54,7 @@ $button-icon: 55px;
       cursor: pointer;
       margin: 10px;
       width: calc((100% / 4 - 20px));
-      box-shadow: var(--box-shadow);
+
       height: auto;
       margin-bottom: 20px;
       border-radius: 10px;
@@ -67,6 +67,11 @@ $button-icon: 55px;
       }
       @include mobile {
         width: calc((100% / 2 - 20px)) !important;
+      }
+      transition: all 0.3s ease-out 0s;
+
+      &:hover {
+        box-shadow: var(--box-shadow);
       }
       .product-thumb {
         position: relative;

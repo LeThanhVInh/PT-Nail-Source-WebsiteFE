@@ -16,7 +16,7 @@ export default function GetDiscount() {
         <div className={cx('input-group')}>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Your email address"
             aria-label="Your email address"
           ></input>
