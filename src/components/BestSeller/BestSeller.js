@@ -24,14 +24,24 @@ export default function BestSeller() {
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-01-380x380.jpg',
       title: 'Body Lotions',
       price: '50',
-      categorize: 'Lipstick',
+      categorize: {
+        title: 'Lipstick',
+        path: 'lipstick',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 2,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-08-380x380.jpg',
       title: 'Natural Lotion',
       price: '55',
-      categorize: 'Makeup Bases',
+      categorize: {
+        title: 'Makeup Bases',
+        path: 'makeup-bases',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 3,
@@ -39,21 +49,36 @@ export default function BestSeller() {
       title: 'Beauty Cream',
       price: '60',
       discount: '15',
-      categorize: 'Nail Polish',
+      categorize: {
+        title: 'Nail Polish',
+        path: 'nail-polish',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 4,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
       title: 'Lip Gloss',
       price: '70',
-      categorize: 'Skin Care',
+      categorize: {
+        title: 'Skin Care',
+        path: 'skin-care',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 5,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
-      title: 'Lip Glosssss',
+      title: 'Lip Gloss',
       price: '66',
-      categorize: 'Lipstick',
+      categorize: {
+        title: 'Lipstick',
+        path: 'lipstick',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
   ];
 
@@ -99,7 +124,11 @@ export default function BestSeller() {
                     <p>-{item.discount}%</p>
                   </div>
                 )}
-                <img src={item.imgUrl} alt={item.title} onClick={() => router.push(`/product/${item.id}`)} />
+                <img
+                  src={item.imgUrl}
+                  alt={item.title}
+                  onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}
+                />
               </div>
 
               <div className={cx('product-info')}>

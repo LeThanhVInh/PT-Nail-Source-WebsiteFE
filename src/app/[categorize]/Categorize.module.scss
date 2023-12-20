@@ -2,6 +2,14 @@
 $icon-size: 16px;
 $button-icon: 55px;
 
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.my-5 {
+  margin: 10px 0;
+}
+
 .wrapper {
   .header-title {
     background: url('http://newfashion.ththeme.net/wp-content/uploads/2022/03/nfslider2.jpg');
@@ -34,6 +42,12 @@ $button-icon: 55px;
       }
       .path-title {
         font-size: 15px;
+        .item-link {
+          cursor: pointer;
+          &:last-child {
+            cursor: unset;
+          }
+        }
         i {
           margin: 0 8px;
         }
@@ -45,6 +59,7 @@ $button-icon: 55px;
     .content-header {
       height: 47px;
       margin-bottom: 45px;
+
       .ch-container {
         display: flex;
         justify-content: space-between;

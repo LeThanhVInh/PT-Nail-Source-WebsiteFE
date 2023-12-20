@@ -1,12 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Container, Col, Row, Form } from 'react-bootstrap';
+import React from 'react';
+import { useRouter } from 'next/navigation';
+
+import { Container, Col, Row } from 'react-bootstrap';
 import { notFound } from 'next/navigation';
 import Select from 'react-select';
 import './styles.scss';
 import styles from './Categorize.module.scss';
 import classNames from 'classnames/bind';
+import ProductSideBar from '@/components/ProductSideBar/ProductSideBar';
 const cx = classNames.bind(styles);
 
 const listItem = [
@@ -94,13 +97,16 @@ const customStyles = {
 };
 
 export default function Categorize({ params }) {
-  const [typeSort, setTypeSort] = useState('');
-
-  const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
 
   const pathName = params.categorize.toLowerCase();
+
   const itemByCategorize = listItem.filter((item) => item.categorize.path === pathName);
   const validPath = listItem.some((item) => item.categorize.path === pathName);
+
+  let filteredCategorize = listItem.filter((element, index, self) => {
+    return self.findIndex((e) => e.categorize.title === element.categorize.title) === index;
+  });
 
   if (!validPath) {
     notFound();
@@ -112,9 +118,11 @@ export default function Categorize({ params }) {
         <div className={cx('header-details')}>
           <h2 className={cx('title')}>{itemByCategorize[0].categorize.title}</h2>
           <div className={cx('path-title')}>
-            <a>Home</a>
+            <span className={cx('item-link')} onClick={() => router.push('/')}>
+              Home
+            </span>
             <i className="bi bi-chevron-right"></i>
-            <a>{itemByCategorize[0].categorize.title}</a>
+            <span className={cx('item-link')}>{itemByCategorize[0].categorize.title}</span>
           </div>
         </div>
       </div>
@@ -132,6 +140,7 @@ export default function Categorize({ params }) {
                         options={options}
                         className={cx('select-categorize')}
                         styles={customStyles}
+                        placeholder="Sort..."
                         theme={(theme) => ({
                           ...theme,
                           borderRadius: 0,
@@ -173,7 +182,11 @@ export default function Categorize({ params }) {
                             <p>-{item.discount}%</p>
                           </div>
                         )}
-                        <img src={item.imgUrl} alt={item.title} onClick={() => router.push(`/product/${item.id}`)} />
+                        <img
+                          src={item.imgUrl}
+                          alt={item.title}
+                          onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}
+                        />
                       </div>
 
                       <div className={cx('product-info')}>
@@ -188,7 +201,7 @@ export default function Categorize({ params }) {
               </div>
             </Col>
             <Col xs={12} md={3}>
-              <div className={cx('content-header')}>ss</div>
+              <ProductSideBar pathName={pathName} />
             </Col>
           </Row>
         </Container>

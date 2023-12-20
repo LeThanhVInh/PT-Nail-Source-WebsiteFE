@@ -1,0 +1,128 @@
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.my-5 {
+  margin: 10px 0;
+}
+
+.content-header {
+  height: 47px;
+  margin-bottom: 45px;
+
+  .ch-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    .ch-title {
+      font-size: 30px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+    .ch-action {
+      .ch-select {
+        .select-categorize {
+          width: 200px;
+        }
+      }
+    }
+  }
+}
+
+.product-categorize {
+  .pc-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding-left: 10px;
+  }
+  .pc-list-wrapper {
+    .pc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      .pc-item {
+        padding: 10px 0;
+        margin-bottom: 5px;
+        .pc-item-link {
+          text-decoration: none;
+          color: var(--text-color);
+          padding: 10px 10px;
+          &.active {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            width: fit-content;
+            border-radius: 999px;
+            color: var(--white-color);
+          }
+        }
+      }
+    }
+  }
+}
+.featured-products {
+  padding: 0 10px;
+  .fp-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+  .fp-item {
+    &:hover {
+      cursor: pointer;
+      .fp-item-info {
+        .title {
+          color: var(--primary-bold);
+          transition: all 0.3s ease-out 0s;
+        }
+      }
+    }
+    .fp-item-img {
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .fp-item-info {
+      .title {
+        transition: all 0.3s ease-out 0s;
+
+        font-size: 15px;
+        color: var(--text-color);
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+      .rating {
+      }
+      .price {
+        font-size: 15px;
+        color: var(--gold-color);
+      }
+    }
+  }
+}
+.product-tags {
+  padding: 0 10px;
+  .pt-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+  .pt-item {
+    display: flex;
+    flex-wrap: wrap;
+    .tag {
+      margin: 5px;
+      font-size: 16px;
+      padding: 8px 20px;
+      background-color: var(--primary-color);
+      color: var(--white-color);
+    }
+  }
+}

@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { useRouter } from 'next/navigation';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Container } from 'react-bootstrap';
@@ -45,13 +46,15 @@ const blogItem = [
 ];
 
 export default function Blog() {
+  const router = useRouter();
+
   return (
     <div className={cx('wrapper')}>
       <Container fluid="lg">
         <div className={cx('header')}>
           <h2 className={cx('header-title')}>Our Blog</h2>
           <div className={cx('view-more-action')}>
-            <button>View All</button>
+            <button onClick={() => router.push('/blog')}>View All</button>
           </div>
         </div>
         <div className={cx('container')}>

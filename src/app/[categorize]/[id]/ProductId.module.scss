@@ -44,6 +44,13 @@ $button-icon: 55px;
       }
       .path-title {
         font-size: 15px;
+        color: var(--white-color);
+        .item-link {
+          cursor: pointer;
+          &:last-child {
+            cursor: unset;
+          }
+        }
         i {
           margin: 0 8px;
         }

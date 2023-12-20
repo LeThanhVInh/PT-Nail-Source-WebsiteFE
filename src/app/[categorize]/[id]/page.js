@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+import Link from 'next/link';
 import { Container, Col, Row, ButtonGroup, ToggleButton, Tab, Tabs } from 'react-bootstrap';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
@@ -23,7 +23,10 @@ const listItem = [
     imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-01-380x380.jpg',
     title: 'Body Lotions',
     price: '50',
-    categorize: 'Lipstick',
+    categorize: {
+      title: 'Lipstick',
+      path: 'lipstick',
+    },
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
   },
@@ -32,7 +35,10 @@ const listItem = [
     imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-08-380x380.jpg',
     title: 'Natural Lotion',
     price: '55',
-    categorize: 'Makeup Bases',
+    categorize: {
+      title: 'Makeup Bases',
+      path: 'makeup-bases',
+    },
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
   },
@@ -42,7 +48,10 @@ const listItem = [
     title: 'Beauty Cream',
     price: '60',
     discount: '15',
-    categorize: 'Nail Polish',
+    categorize: {
+      title: 'Nail Polish',
+      path: 'nail-polish',
+    },
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
   },
@@ -51,7 +60,10 @@ const listItem = [
     imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
     title: 'Lip Gloss',
     price: '70',
-    categorize: 'Skin Care',
+    categorize: {
+      title: 'Skin Care',
+      path: 'skin-care',
+    },
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
   },
@@ -60,7 +72,10 @@ const listItem = [
     imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
     title: 'Lip Gloss',
     price: '66',
-    categorize: 'Lipstick',
+    categorize: {
+      title: 'Lipstick',
+      path: 'lipstick',
+    },
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
   },
@@ -77,7 +92,7 @@ export default function ProductDetails({ params }) {
     { name: 'L', value: 'l' },
   ];
 
-  const itemById = listItem.find((item) => item.id == params.id);
+  const itemById = listItem.find((item) => item.id === Number(params.id));
 
   return (
     <div className={cx('wrapper')}>
@@ -85,16 +100,20 @@ export default function ProductDetails({ params }) {
         <div className={cx('header-details')}>
           <h2 className={cx('title')}>{itemById.title}</h2>
           <div className={cx('path-title')}>
-            <a>Home</a>
+            <span className={cx('item-link')} onClick={() => router.push('/')}>
+              Home
+            </span>
             <i className="bi bi-chevron-right"></i>
-            <a>{itemById.categorize}</a>
+            <span className={cx('item-link')} onClick={() => router.push(`/${itemById.categorize.path}`)}>
+              {itemById.categorize.title}
+            </span>
             <i className="bi bi-chevron-right"></i>
-            <a>{itemById.title}</a>
+            <span className={cx('item-link')}>{itemById.title}</span>
           </div>
         </div>
       </div>
       <Container fluid="md">
-        <div className={cx('container-detail', 'mb-30')}>
+        <div className={cx('container-detail')}>
           <Row>
             <Col xs={12} md={6}>
               <Swiper
@@ -113,10 +132,16 @@ export default function ProductDetails({ params }) {
                   <img src={itemById.imgUrl} alt={itemById.title} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src={itemById.imgUrl} alt={itemById.title} />
+                  <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src={itemById.imgUrl} alt={itemById.title} />
+                  <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
                 </SwiperSlide>
               </Swiper>
               <Swiper
@@ -125,6 +150,7 @@ export default function ProductDetails({ params }) {
                 spaceBetween={10}
                 slidesPerView={3}
                 freeMode={true}
+                centeredSlides={true}
                 watchSlidesProgress={true}
                 modules={[FreeMode, Navigation, Thumbs]}
                 className={cx('mySwiper-detail-child')}
@@ -133,10 +159,16 @@ export default function ProductDetails({ params }) {
                   <img src={itemById.imgUrl} alt={itemById.title} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src={itemById.imgUrl} alt={itemById.title} />
+                  <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src={itemById.imgUrl} alt={itemById.title} />
+                  <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
                 </SwiperSlide>
               </Swiper>
             </Col>
@@ -270,7 +302,11 @@ export default function ProductDetails({ params }) {
                           <p>-{item.discount}%</p>
                         </div>
                       )}
-                      <img src={item.imgUrl} alt={item.title} onClick={() => router.push(`/product/${item.id}`)} />
+                      <img
+                        src={item.imgUrl}
+                        alt={item.title}
+                        onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}
+                      />
                     </div>
 
                     <div className={cx('product-info')}>
