@@ -76,7 +76,6 @@ const listItem = [
 export default function ProductSideBar(props) {
   const router = useRouter();
   const { pathName } = props;
-  console.log('pathName', pathName);
 
   let filteredCategorize = listItem.filter((element, index, self) => {
     return self.findIndex((e) => e.categorize.title === element.categorize.title) === index;
@@ -84,7 +83,7 @@ export default function ProductSideBar(props) {
 
   return (
     <>
-      <div className={cx('content-header')}>
+      <div className={cx('content-header', 'overrides')}>
         <div className={cx('input-group')}>
           <input type="text" className="form-control" placeholder="Search" aria-label="Search"></input>
           <div className={cx('input-group-append')}>

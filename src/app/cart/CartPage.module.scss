@@ -1,0 +1,207 @@
+@import '@/app/import';
+$color_1: #626262;
+$color_2: #6f6f6f;
+$color_3: var(--primary-bold);
+$color_4: #fff;
+$color_5: #83cbdc;
+$color_6: #ffffff;
+$border-color_1: #e5e5e5;
+
+.cart-table-container {
+  table {
+    --bs-table-striped-bg: var(--white-color);
+    --bs-table-hover-bg: var(--white-color);
+    background: #fff none repeat scroll 0 0;
+    border-color: $border-color_1;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    text-align: center;
+    width: 100%;
+    @include x-mobile {
+      border-width: 1px;
+    }
+
+    th {
+      border-top: medium none;
+      font-weight: 600;
+      padding: 20px 10px;
+      text-align: center;
+      text-transform: capitalize;
+      vertical-align: middle;
+      white-space: nowrap;
+      font-size: 15px;
+      border-bottom: 1px solid #e5e5e5;
+      border-right: 1px solid #e5e5e5;
+    }
+    td {
+      border-bottom: 1px solid #e5e5e5;
+      border-right: 1px solid #e5e5e5;
+      border-top: medium none;
+      padding: 20px 10px;
+      vertical-align: middle;
+      font-size: 13px;
+      input {
+        background: transparent;
+        border: medium none;
+        border-radius: 3px;
+        color: var(--text-color);
+        font-size: 16px;
+        font-weight: normal;
+        height: 40px;
+        padding: 0 5px 0 10px;
+        width: 60px;
+        text-align: center;
+        font-weight: 600;
+      }
+    }
+    td.product-subtotal {
+      font-size: 14px;
+      font-weight: 600;
+      width: 120px;
+    }
+    td.product-name {
+      a {
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 10px;
+        text-transform: capitalize;
+        &:hover {
+          color: $color_3;
+        }
+      }
+      width: 270px;
+    }
+    td.product-thumbnail {
+      width: 100px;
+    }
+    td.product-remove {
+      a {
+        display: inline-block;
+        font-size: 18px;
+        text-align: center;
+        -webkit-transition: all 0.3s ease-in;
+        &:hover {
+          i {
+            color: $color_3;
+          }
+        }
+        i {
+          color: var(--grey-color);
+          font-size: 30px;
+          &:hover {
+            color: $color_3;
+          }
+        }
+      }
+
+      width: 150px;
+    }
+    .product-price {
+      .amount {
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+    td.product-quantity {
+      width: 180px;
+    }
+    td.product-price {
+      width: 130px;
+    }
+  }
+  .cart-table {
+    @include x-mobile {
+      thead {
+        display: none;
+      }
+
+      tr {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border: 1px solid #ededed;
+        padding: 30px 0;
+      }
+
+      th,
+      td {
+        border: 0 !important;
+      }
+
+      td {
+        padding: 5px 0 !important;
+      }
+
+      td.product-thumbnail {
+        width: 100% !important;
+        img {
+          width: 160px !important;
+        }
+      }
+    }
+
+    th {
+      text-transform: uppercase;
+      font-size: 15px;
+      line-height: 24px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #222;
+      background-color: transparent;
+      padding: 16px 12px;
+      padding-left: 12px;
+      text-align: center;
+    }
+    td {
+      background-color: var(--white-color) !important;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      padding-left: 25px;
+      text-align: center;
+    }
+    td.product-thumbnail {
+      width: 115px;
+      img {
+        width: 74px;
+      }
+    }
+
+    .product-name {
+      a {
+        text-decoration: none;
+        color: var(--text-color);
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1;
+        margin-bottom: 20px;
+      }
+    }
+    .product-quantity {
+      input {
+        width: 80%;
+      }
+      .pro-qty {
+        .dec,
+        .inc {
+          font-size: 20px;
+          font-weight: 400;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .total-price {
+      .money {
+        font-size: 14px;
+        color: var(--text-color);
+        font-weight: 600;
+      }
+    }
+  }
+}

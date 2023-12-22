@@ -1,4 +1,10 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+
 import { Container, Row, Col } from 'react-bootstrap';
+
+import { notFound } from 'next/navigation';
 
 import styles from './Contact.module.scss';
 import classNames from 'classnames/bind';

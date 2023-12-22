@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { notFound, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Container, Col, Row, ButtonGroup, ToggleButton, Tab, Tabs } from 'react-bootstrap';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -81,25 +81,18 @@ const listItem = [
   },
 ];
 
-const valueSelect = [
-  { name: 'S', value: 's' },
-  { name: 'M', value: 'm' },
-  { name: 'L', value: 'l' },
-];
-
 export default function ProductDetails({ params }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [selectValue, setSelectValue] = useState('s');
   const router = useRouter();
 
-  const validPath = listItem.some((item) => item.categorize.path === params.categorize);
-  const validID = listItem.some((item) => item.id === Number(params.id));
+  const valueSelect = [
+    { name: 'S', value: 's' },
+    { name: 'M', value: 'm' },
+    { name: 'L', value: 'l' },
+  ];
 
   const itemById = listItem.find((item) => item.id === Number(params.id));
-
-  if (!validPath || !validID) {
-    notFound();
-  }
 
   return (
     <div className={cx('wrapper')}>

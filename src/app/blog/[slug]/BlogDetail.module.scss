@@ -1,0 +1,127 @@
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.header-title {
+  background: url('http://newfashion.ththeme.net/wp-content/uploads/2022/03/nfslider2.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  position: relative;
+  .header-details {
+    height: 100%;
+    width: 100%;
+    backdrop-filter: brightness(0.4);
+    color: var(--white-color);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .title {
+      font-size: 30px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .path-title {
+      font-size: 15px;
+      .item-link {
+        cursor: pointer;
+        &:last-child {
+          cursor: unset;
+        }
+      }
+      i {
+        margin: 0 8px;
+      }
+    }
+  }
+}
+
+.main-content {
+  margin-top: 60px;
+  .blog-thumb {
+    height: 40vh;
+    margin-bottom: 45px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .content-header {
+    margin-bottom: 30px;
+    .ch-author {
+      margin-bottom: 8px;
+      display: inline-block;
+      color: var(--desc-text);
+    }
+    .ch-container {
+      .ch-title {
+        font-size: 30px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+    }
+  }
+  .blog-content {
+    .item-text-grey {
+      color: var(--desc-text);
+      font-size: 15px;
+    }
+    .item-text-main {
+      border-left: 5px solid var(--gold-color);
+      padding: 10px 20px;
+      font-size: 20px;
+      color: var(--desc-text);
+    }
+  }
+  .info-author {
+    border: 1px solid var(--grey-color-light);
+    padding: 20px;
+    .avatar {
+      height: 100%;
+      width: 100%;
+    }
+    .info-details {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px 30px;
+      .id-name {
+        color: var(--text-color);
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .id-desc {
+        color: var(--desc-text);
+      }
+    }
+    .socials-list {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      .socials-item {
+        margin-right: 15px;
+        font-size: 20px;
+        transition: all 0.3s ease-out 0s;
+
+        &:hover {
+          cursor: pointer;
+          color: var(--gold-color);
+        }
+      }
+    }
+  }
+}

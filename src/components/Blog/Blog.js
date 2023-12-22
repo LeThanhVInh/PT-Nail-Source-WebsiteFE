@@ -98,7 +98,7 @@ export default function Blog() {
                         <span>{item.description}</span>
                       </div>
                       <div className={cx('btn-action')}>
-                        <button>Read More</button>
+                        <button onClick={() => router.push(`/blog/${item.id}`)}>Read More</button>
                       </div>
                     </div>
                   </div>

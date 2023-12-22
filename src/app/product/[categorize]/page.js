@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { notFound } from 'next/navigation';
 
 import { Container, Col, Row } from 'react-bootstrap';
+import { notFound } from 'next/navigation';
 import Select from 'react-select';
 import './styles.scss';
 import styles from './Categorize.module.scss';
