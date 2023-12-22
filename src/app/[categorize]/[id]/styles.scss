@@ -1,3 +1,5 @@
+@import '@/app/import';
+
 // .swiper {
 //   width: 100%;
 //   height: 100%;
@@ -106,56 +108,96 @@
     pointer-events: none;
   }
 }
+.product-images {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-.mySwiper-detail-parent {
-  height: 70% !important;
-  width: 100%;
-}
+  // @include x-mobile {
+  //   align-items: center;
+  // }
+  // padding: 0px 112px;
 
-// .mySwiper-detail-child {
-//   height: 20%;
-//   box-sizing: border-box;
-//   padding: 10px 0;
-// }
+  // @include xl-tablet {
+  //   padding: 0px 76px;
+  // }
 
-// .mySwiper-detail-child .swiper-slide {
-//   width: 25%;
-//   height: 20%;
-//   opacity: 0.4;
-// }
+  // @include x-tablet {
+  //   padding: 0px 38px;
+  // }
 
-// .mySwiper-detail-child .swiper-slide-thumb-active {
-//   opacity: 1;
-// }
+  // @include s-tablet {
+  //   padding: 0;
+  // }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  // @include x-mobile {
+  //   // padding: 0 197px;
+  // }
+  // @include mobile {
+  //   padding: 0 30px;
+  // }
 
-.mySwiper-detail-child {
-  box-sizing: border-box;
-  margin: 10px 0;
-  height: 24% !important;
-  max-height: 30%;
-  .swiper-slide {
-    width: 25%;
-    // height: 20%;
-    opacity: 0.4;
-  }
-  .swiper-slide-thumb-active {
-    opacity: 1;
+  .mySwiper-detail-parent {
+    height: 300px !important;
+    width: 100%;
   }
 
-  .swiper-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .swiper-slide img {
+    display: block;
     width: 100%;
     height: 100%;
-    // margin-top: 20px;
+    object-fit: contain !important;
+  }
+
+  .mySwiper-detail-child {
+    // box-sizing: border-box;
+    margin: 10px 0;
+    // margin: 10px 112px;
+    height: 24% !important;
+    max-height: 30%;
+    width: 300px;
+    // width: unset;
+    // @include x-mobile {
+    //   width: 300px;
+    // }
+
+    // @include xl-tablet {
+    //   margin: 10px 76px;
+    // }
+    // @include x-tablet {
+    //   margin: 10px 37px;
+    // }
+    // @include tablet {
+    //   margin: 10px 37px;
+    // }
+    // @include s-tablet {
+    //   margin: 0;
+    // }
+    // @include x-mobile {
+    //   margin: 10px 214px;
+    // }
+    // @include mobile {
+    //   margin: 10px 30px;
+    // }
+
+    .swiper-slide {
+      width: 25%;
+      // height: 20%;
+      opacity: 0.4;
+    }
+    .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+
+    .swiper-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      // margin-top: 20px;
+    }
   }
 }
 

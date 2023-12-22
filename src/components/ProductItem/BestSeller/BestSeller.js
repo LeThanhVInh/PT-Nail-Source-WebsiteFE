@@ -1,53 +1,84 @@
 'use client';
 
 import { useState } from 'react';
-
 import { Container } from 'react-bootstrap';
-import styles from './NewProducts.module.scss';
-import classNames from 'classnames/bind';
+import { useRouter } from 'next/navigation';
 
+import styles from '../ProductItem.module.scss';
+import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
-export default function NewProducts() {
+export default function BestSeller() {
   const [selectedItem, setSelectedItem] = useState(null);
+
+  const router = useRouter();
 
   const handleItemClick = (index) => {
     setSelectedItem(index);
   };
 
-  const listData = ['Trending', 'Featured', 'Makeup On sale', 'Top rate'];
+  const listData = ['All', 'Lipstick', 'Makeup Bases', 'Nail Polish', 'Skin Care'];
   const listItem = [
     {
       id: 1,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-01-380x380.jpg',
       title: 'Body Lotions',
       price: '50',
+      categorize: {
+        title: 'Lipstick',
+        path: 'lipstick',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 2,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-08-380x380.jpg',
       title: 'Natural Lotion',
       price: '55',
-      discount: '35',
+      categorize: {
+        title: 'Makeup Bases',
+        path: 'makeup-bases',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 3,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-16-380x380.jpg',
       title: 'Beauty Cream',
       price: '60',
+      discount: '15',
+      categorize: {
+        title: 'Nail Polish',
+        path: 'nail-polish',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 4,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
       title: 'Lip Gloss',
       price: '70',
+      categorize: {
+        title: 'Skin Care',
+        path: 'skin-care',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 5,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
-      title: 'Lip Glosssss',
+      title: 'Lip Gloss',
       price: '66',
-      discount: '90',
+      categorize: {
+        title: 'Lipstick',
+        path: 'lipstick',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
   ];
 
@@ -55,7 +86,7 @@ export default function NewProducts() {
     <div className={cx('wrapper')}>
       <Container fluid="md">
         <div className={cx('header')}>
-          <h2 className={cx('header-title')}>New Products</h2>
+          <h2 className={cx('header-title')}>Best Seller</h2>
           <div className={cx('categories')}>
             <ul className={cx('list')}>
               {listData.map((item, index) => (
@@ -75,7 +106,7 @@ export default function NewProducts() {
             <div className={cx('product-wrapper')} key={item.id}>
               <div className={cx('product-thumb')}>
                 <div className={cx('product-action')}>
-                  <a>
+                  <a onClick={() => console.log('a')}>
                     <i className="bi bi-cart2"></i>
                   </a>
                   <a>
@@ -93,7 +124,11 @@ export default function NewProducts() {
                     <p>-{item.discount}%</p>
                   </div>
                 )}
-                <img src={item.imgUrl} alt={item.title} />
+                <img
+                  src={item.imgUrl}
+                  alt={item.title}
+                  onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}
+                />
               </div>
 
               <div className={cx('product-info')}>

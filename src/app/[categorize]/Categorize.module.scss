@@ -72,9 +72,51 @@ $button-icon: 55px;
           letter-spacing: 2px;
         }
         .ch-action {
+          display: flex;
+          @include x-mobile {
+            width: 100%;
+            margin-top: 10px;
+            justify-content: space-between;
+          }
           .ch-select {
             .select-categorize {
               width: 200px;
+              @include x-mobile {
+                width: 300px;
+              }
+              @include mobile {
+                width: 180px;
+              }
+            }
+          }
+        }
+        .ch-grid {
+          .view-type {
+            --bs-btn-active-bg: var(--primary-color);
+            --bs-btn-bg: var(--white-color);
+            --bs-btn-color: var(--text-color);
+            border: 1px solid var(--grey-color-light) !important;
+            text-align: center;
+            border: none;
+            border-radius: unset;
+            width: 70px;
+            height: 44px;
+            font-size: 20px;
+            &:not(:last-child) {
+              margin: 0 15px;
+            }
+            .btn-outline-danger {
+              // color: yellow;
+            }
+          }
+          .btn-grid {
+            height: 44px;
+            border: 1px solid var(--grey-color-light);
+            background-color: var(--white-color);
+            width: 70px;
+            color: #000;
+            i {
+              font-size: 20px;
             }
           }
         }

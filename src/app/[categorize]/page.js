@@ -1,15 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { notFound } from 'next/navigation';
 
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row, ToggleButton, ButtonGroup } from 'react-bootstrap';
+
 import Select from 'react-select';
 import './styles.scss';
 import styles from './Categorize.module.scss';
 import classNames from 'classnames/bind';
 import ProductSideBar from '@/components/ProductSideBar/ProductSideBar';
+import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 const cx = classNames.bind(styles);
 
 const listItem = [
@@ -102,10 +104,16 @@ const customStyles = {
   },
 };
 
+const valueSelect = [
+  { name: <i className="bi bi-grid-3x2"></i>, value: 'grid' },
+  { name: <i class="bi bi-list-task"></i>, value: 'list' },
+];
+
 export default function Categorize({ params }) {
   const router = useRouter();
-
   const pathName = params.categorize.toLowerCase();
+
+  const [selectValue, setSelectValue] = useState('grid');
 
   const itemByCategorize = listItem.filter((item) => item.categorize.path === pathName);
   const validPath = listItem.some((item) => item.categorize.path === pathName);
@@ -119,99 +127,129 @@ export default function Categorize({ params }) {
   }
 
   return (
-    <div className={cx('wrapper')}>
-      <div className={cx('header-title')}>
-        <div className={cx('header-details')}>
-          <h2 className={cx('title')}>{itemByCategorize[0].categorize.title}</h2>
-          <div className={cx('path-title')}>
-            <span className={cx('item-link')} onClick={() => router.push('/')}>
-              Home
-            </span>
-            <i className="bi bi-chevron-right"></i>
-            <span className={cx('item-link')}>{itemByCategorize[0].categorize.title}</span>
-          </div>
-        </div>
-      </div>
-      <div className={cx('main-content')}>
-        <Container fluid="md">
-          <Row>
-            <Col xs={12} md={9}>
-              <div className={cx('content-header')}>
-                <div className={cx('ch-container')}>
-                  <h2 className={cx('ch-title')}>{itemByCategorize[0].categorize.title}</h2>
-                  <div className={cx('ch-action')}>
-                    <div className={cx('ch-select')}>
-                      <Select
-                        instanceId={'select-categorize'}
-                        options={options}
-                        className={cx('select-categorize')}
-                        styles={customStyles}
-                        placeholder="Sort..."
-                        theme={(theme) => ({
-                          ...theme,
-                          borderRadius: 0,
-                          colors: {
-                            ...theme.colors,
-                            neutral50: 'grey',
-                            neutral10: 'red',
-                            primary50: 'var(--primary-light)',
-                            primary25: 'var(--primary-light)',
-                            primary: 'var(--primary-bold)',
-                          },
-                        })}
-                      />
+    <>
+      <Breadcrumb
+        title1={itemByCategorize[0].categorize.title}
+        title2={itemByCategorize[0].categorize.title}
+        path1={itemByCategorize[0].categorize.path}
+      />
+      <div className={cx('wrapper')}>
+        <div className={cx('main-content')}>
+          <Container fluid="md">
+            <Row>
+              <Col xs={12} md={9}>
+                <div className={cx('content-header')}>
+                  <div className={cx('ch-container')}>
+                    <h2 className={cx('ch-title')}>{itemByCategorize[0].categorize.title}</h2>
+                    <div className={cx('ch-action')}>
+                      <div className={cx('ch-select')}>
+                        <Select
+                          instanceId={'select-categorize'}
+                          options={options}
+                          className={cx('select-categorize')}
+                          styles={customStyles}
+                          placeholder="Sort..."
+                          theme={(theme) => ({
+                            ...theme,
+                            borderRadius: 0,
+                            colors: {
+                              ...theme.colors,
+                              neutral50: 'grey',
+                              neutral10: 'red',
+                              primary50: 'var(--primary-light)',
+                              primary25: 'var(--primary-light)',
+                              primary: 'var(--primary-bold)',
+                            },
+                          })}
+                        />
+                      </div>
+                      <div className={cx('ch-grid')}>
+                        <ButtonGroup>
+                          {valueSelect.map((val, idx) => (
+                            <ToggleButton
+                              key={idx}
+                              id={`valueSelect-${idx}`}
+                              type="radio"
+                              variant={'outline-danger'}
+                              name="valueSelect"
+                              value={val.value}
+                              checked={selectValue === val.value}
+                              onChange={(e) => setSelectValue(e.currentTarget.value)}
+                              className={cx('view-type')}
+                            >
+                              {val.name}
+                            </ToggleButton>
+                          ))}
+                        </ButtonGroup>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className={cx('main-container')}>
-                <div className={cx('product')}>
-                  {itemByCategorize.map((item) => (
-                    <div className={cx('product-wrapper')} key={item.id}>
-                      <div className={cx('product-thumb')}>
-                        <div className={cx('product-action')}>
-                          <a onClick={() => console.log('a')}>
-                            <i className="bi bi-cart2"></i>
-                          </a>
-                          <a>
-                            <i className="bi bi-search"></i>
-                          </a>
-                          <a>
-                            <i className="bi bi-arrow-clockwise"></i>
-                          </a>
-                          <a>
-                            <i className="bi bi-heart"></i>
-                          </a>
-                        </div>
-                        {item.discount && (
-                          <div className={cx('product-badge')}>
-                            <p>-{item.discount}%</p>
-                          </div>
-                        )}
-                        <img
-                          src={item.imgUrl}
-                          alt={item.title}
-                          onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}
-                        />
-                      </div>
-
-                      <div className={cx('product-info')}>
-                        <h3 className={cx('product-title')}>{item.title}</h3>
-                        <div className={cx('product-price')}>
-                          <span>${item.price}</span>
-                        </div>
-                      </div>
+              </Col>
+              <Col xs={12} md={3}>
+                <div className={cx('content-header', 'overrides')}>
+                  <div className={cx('input-group')}>
+                    <input type="text" className="form-control" placeholder="Search" aria-label="Search"></input>
+                    <div className={cx('input-group-append')}>
+                      <button className={cx('btn btn-primary')} type="button">
+                        Search
+                      </button>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              </div>
-            </Col>
-            <Col xs={12} md={3}>
-              <ProductSideBar pathName={pathName} />
-            </Col>
-          </Row>
-        </Container>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12} md={9}>
+                <div className={cx('main-container')}>
+                  <div className={cx('product')}>
+                    {itemByCategorize.map((item) => (
+                      <div className={cx('product-wrapper')} key={item.id}>
+                        <div className={cx('product-thumb')}>
+                          <div className={cx('product-action')}>
+                            <a onClick={() => console.log('a')}>
+                              <i className="bi bi-cart2"></i>
+                            </a>
+                            <a>
+                              <i className="bi bi-search"></i>
+                            </a>
+                            <a>
+                              <i className="bi bi-arrow-clockwise"></i>
+                            </a>
+                            <a>
+                              <i className="bi bi-heart"></i>
+                            </a>
+                          </div>
+                          {item.discount && (
+                            <div className={cx('product-badge')}>
+                              <p>-{item.discount}%</p>
+                            </div>
+                          )}
+                          <img
+                            src={item.imgUrl}
+                            alt={item.title}
+                            onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}
+                          />
+                        </div>
+
+                        <div className={cx('product-info')}>
+                          <h3 className={cx('product-title')}>{item.title}</h3>
+                          <div className={cx('product-price')}>
+                            <span>${item.price}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} md={3}>
+                <ProductSideBar pathName={pathName} />
+              </Col>
+            </Row>
+          </Container>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

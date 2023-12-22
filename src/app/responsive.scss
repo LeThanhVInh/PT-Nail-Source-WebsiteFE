@@ -1,4 +1,4 @@
-@mixin s-tablet {
+@mixin xl-tablet {
   @media (max-width: 1399.98px) {
     @content;
   }

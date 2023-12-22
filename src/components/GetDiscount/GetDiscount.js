@@ -13,17 +13,19 @@ export default function GetDiscount() {
           Aenean sodales dictum augue, in faucibus nisi sollicitudin eu. Nulla semper arcu. Nam molestie sem eu quam
           fermentum a tempus nisi aliquet.
         </p>
-        <div className={cx('input-group')}>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Your email address"
-            aria-label="Your email address"
-          ></input>
-          <div className={cx('input-group-append')}>
-            <button className={cx('btn btn-primary')} type="button">
-              Sign up
-            </button>
+        <div className={cx('discount')}>
+          <div className={cx('input-group')}>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Your email address"
+              aria-label="Your email address"
+            ></input>
+            <div className={cx('input-group-append')}>
+              <button className={cx('btn btn-info')} type="button">
+                Sign up
+              </button>
+            </div>
           </div>
         </div>
       </div>

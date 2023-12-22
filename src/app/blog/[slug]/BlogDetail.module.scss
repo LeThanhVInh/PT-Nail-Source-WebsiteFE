@@ -60,10 +60,21 @@
   }
   .content-header {
     margin-bottom: 30px;
-    .ch-author {
-      margin-bottom: 8px;
-      display: inline-block;
-      color: var(--desc-text);
+    .bc-post-meta-data {
+      color: var(--grey-color);
+      font-size: 15px;
+      margin: 10px 0 20px 0;
+      display: flex;
+
+      .meta-item {
+        display: flex;
+        i {
+          margin-right: 5px;
+        }
+        .split {
+          margin: 0 10px;
+        }
+      }
     }
     .ch-container {
       .ch-title {

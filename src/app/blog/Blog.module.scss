@@ -1,3 +1,5 @@
+@import '@/app/import';
+
 .mb-30 {
   margin-bottom: 30px;
 }
@@ -54,7 +56,8 @@
     margin-top: 60px;
     .content-header {
       height: 47px;
-      margin-bottom: 45px;
+      margin-bottom: 15px;
+
       .ch-container {
         display: flex;
         justify-content: space-between;
@@ -65,11 +68,54 @@
           text-transform: uppercase;
           font-weight: 600;
           letter-spacing: 2px;
+          margin: 0;
         }
         .ch-action {
+          display: flex;
+          @include x-mobile {
+            // width: 100%;
+            // margin-top: 10px;
+            justify-content: space-between;
+          }
           .ch-select {
             .select-categorize {
               width: 200px;
+              @include x-mobile {
+                width: 300px;
+              }
+              @include mobile {
+                width: 180px;
+              }
+            }
+          }
+        }
+        .ch-grid {
+          .view-type {
+            --bs-btn-active-bg: var(--primary-color);
+            --bs-btn-bg: var(--white-color);
+            --bs-btn-color: var(--text-color);
+            border: 1px solid var(--grey-color-light) !important;
+            text-align: center;
+            border: none;
+            border-radius: unset;
+            width: 70px;
+            height: 44px;
+            font-size: 20px;
+            &:not(:last-child) {
+              margin: 0 15px;
+            }
+            .btn-outline-danger {
+              // color: yellow;
+            }
+          }
+          .btn-grid {
+            height: 44px;
+            border: 1px solid var(--grey-color-light);
+            background-color: var(--white-color);
+            width: 70px;
+            color: #000;
+            i {
+              font-size: 20px;
             }
           }
         }
@@ -104,9 +150,21 @@
         justify-content: center;
         padding: 10px;
 
-        .bc-author {
+        .bc-post-meta-data {
           color: var(--grey-color);
           font-size: 15px;
+          margin: 10px 0 20px 0;
+          display: flex;
+
+          .meta-item {
+            display: flex;
+            i {
+              margin-right: 5px;
+            }
+            .split {
+              margin: 0 10px;
+            }
+          }
         }
         .bc-title {
           h3 {
@@ -114,7 +172,6 @@
             color: var(--text-color);
             font-weight: 700;
             letter-spacing: 1px;
-            margin: 10px 0 20px 0;
           }
         }
         .bc-desc {

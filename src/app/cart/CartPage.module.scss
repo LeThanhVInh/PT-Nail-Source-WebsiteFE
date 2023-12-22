@@ -205,3 +205,208 @@ $border-color_1: #e5e5e5;
     }
   }
 }
+
+.cart-action {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  @include x-mobile {
+    width: 100%;
+    justify-content: center;
+  }
+  button {
+    background-color: var(--primary-color);
+    font-size: 16px;
+    color: var(--white-color);
+    padding: 10px 15px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-out 0s;
+    @include x-mobile {
+      width: 60%;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      &:not(:last-child) {
+        margin-right: 0 !important;
+      }
+    }
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+    &:hover {
+      background-color: var(--primary-bold);
+    }
+  }
+}
+.pick-delivery-date {
+  margin: 50px 0;
+  font-size: 14px;
+  h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .date-picker-wrapper {
+    display: flex;
+    background-color: var(--white-item-bg);
+    align-items: center;
+    padding: 0 20px;
+    color: var(--text-grey);
+    margin-bottom: 20px;
+    .date-picker {
+      width: 100%;
+      input {
+        background-color: var(--white-item-bg);
+        width: 100%;
+        border: none;
+        color: var(--text-grey);
+        height: 45px;
+        padding: 0 10px;
+        &:focus-visible {
+          border: none !important;
+          outline: none;
+        }
+      }
+    }
+  }
+  .delivery-note {
+    width: 100%;
+    margin-bottom: 20px;
+
+    input {
+      background-color: var(--white-item-bg);
+      width: 100%;
+      border: none;
+      color: var(--text-grey);
+      height: 45px;
+      padding: 0 20px;
+      &:focus-visible {
+        border: none !important;
+        outline: none;
+      }
+    }
+  }
+  .pick-delivery-decs {
+    font-size: 15px;
+    color: var(--text-color);
+  }
+}
+
+.culculate-shipping {
+  font-size: 14px;
+
+  h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .countries-select {
+    margin-bottom: 20px;
+  }
+  .zip-code {
+    width: 100%;
+    margin-bottom: 20px;
+
+    input {
+      background-color: var(--white-item-bg);
+      width: 100%;
+      border: none;
+      color: var(--text-grey);
+      height: 45px;
+      padding: 0 20px;
+      &:focus-visible {
+        border: none !important;
+        outline: none;
+      }
+    }
+  }
+  .culculate-action {
+    display: flex;
+
+    margin-top: 20px;
+    @include x-mobile {
+      width: 100%;
+      justify-content: center;
+    }
+    button {
+      background-color: var(--primary-color);
+      font-size: 16px;
+      color: var(--white-color);
+      padding: 10px 15px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease-out 0s;
+      @include x-mobile {
+        width: 60%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      &:hover {
+        background-color: var(--primary-bold);
+      }
+    }
+  }
+}
+
+.cart-total-wrapper {
+  margin: 50px 0;
+  padding: 40px;
+  background-color: var(--white-item-bg);
+  h2 {
+    font-size: 34px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .table-total {
+    --bs-table-bg: var(--white-item-bg);
+    tr,
+    th,
+    td {
+      color: var(--text-color);
+      font-weight: 500;
+      padding: 16px 12px;
+    }
+    .cart-subtotal {
+      .amount {
+      }
+    }
+  }
+  .cart-calculation-button {
+    .check-cart {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      color: var(--text-grey);
+      input {
+        margin-right: 5px;
+        &:checked {
+          color: red;
+        }
+      }
+    }
+
+    button {
+      margin-top: 10px;
+      display: block;
+      background-color: var(--primary-color);
+      font-size: 16px;
+      color: var(--white-color);
+      padding: 10px 15px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease-out 0s;
+      @include x-mobile {
+        width: 60%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      &:hover {
+        background-color: var(--primary-bold);
+      }
+    }
+  }
+}

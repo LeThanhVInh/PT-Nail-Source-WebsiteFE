@@ -6,8 +6,10 @@ import { notFound, useRouter } from 'next/navigation';
 import ProductSideBar from '@/components/ProductSideBar/ProductSideBar';
 import Blog from '@/components/Blog/Blog';
 import GetDiscount from '@/components/GetDiscount/GetDiscount';
+import '../styles.scss';
 import styles from './BlogDetail.module.scss';
 import classNames from 'classnames/bind';
+import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 const cx = classNames.bind(styles);
 
 const blogItem = [
@@ -53,22 +55,7 @@ export default function BlogDetail({ params }) {
 
   return (
     <>
-      <div className={cx('header-title')}>
-        <div className={cx('header-details')}>
-          <h2 className={cx('title')}>Blog</h2>
-          <div className={cx('path-title')}>
-            <span className={cx('item-link')} onClick={() => router.push('/')}>
-              Home
-            </span>
-            <i className="bi bi-chevron-right"></i>
-            <span className={cx('item-link')} onClick={() => router.push('/blog')}>
-              Blog
-            </span>
-            <i className="bi bi-chevron-right"></i>
-            <span className={cx('item-link')}>{itemById.title}</span>
-          </div>
-        </div>
-      </div>
+      <Breadcrumb title1={'blog'} title2={'blog'} title3={itemById.title} path1={'blog'} />
       <div className={cx('main-content')}>
         <Container fluid="lg">
           <Row>
@@ -77,9 +64,17 @@ export default function BlogDetail({ params }) {
                 <img src={itemById.imgUrl} />
               </div>
               <div className={cx('content-header')}>
-                <span className={cx('ch-author')}>
-                  <i className="bi bi-person"></i> {itemById.author}
-                </span>
+                <div className={cx('bc-post-meta-data')}>
+                  <div className={cx('meta-item')}>
+                    <i className="bi bi-person"></i>
+                    <span className={cx('author')}>{itemById.author}</span>
+                    <p className={cx('split')}>|</p>
+                  </div>
+                  <div className={cx('meta-item')}>
+                    <i className="bi bi-calendar-check"></i>
+                    <span className={cx('author')}>Feb 23, 2023</span>
+                  </div>
+                </div>
                 <div className={cx('ch-container')}>
                   <h2 className={cx('ch-title')}>{itemById.title}</h2>
                 </div>
@@ -151,6 +146,16 @@ export default function BlogDetail({ params }) {
             </Col>
 
             <Col xs={12} lg={3}>
+              <div className={cx('content-header', 'overrides')}>
+                <div className={cx('input-group')}>
+                  <input type="text" className="form-control" placeholder="Search" aria-label="Search"></input>
+                  <div className={cx('input-group-append')}>
+                    <button className={cx('btn btn-primary')} type="button">
+                      Search
+                    </button>
+                  </div>
+                </div>
+              </div>
               <ProductSideBar />
             </Col>
           </Row>

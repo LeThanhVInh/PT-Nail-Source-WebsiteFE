@@ -15,6 +15,7 @@ import 'swiper/css/thumbs';
 import './styles.scss';
 import styles from './ProductId.module.scss';
 import classNames from 'classnames/bind';
+import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 const cx = classNames.bind(styles);
 
 const listItem = [
@@ -102,233 +103,227 @@ export default function ProductDetails({ params }) {
   }
 
   return (
-    <div className={cx('wrapper')}>
-      <div className={cx('header-title')}>
-        <div className={cx('header-details')}>
-          <h2 className={cx('title')}>{itemById.title}</h2>
-          <div className={cx('path-title')}>
-            <span className={cx('item-link')} onClick={() => router.push('/')}>
-              Home
-            </span>
-            <i className="bi bi-chevron-right"></i>
-            <span className={cx('item-link')} onClick={() => router.push(`/${itemById.categorize.path}`)}>
-              {itemById.categorize.title}
-            </span>
-            <i className="bi bi-chevron-right"></i>
-            <span className={cx('item-link')}>{itemById.title}</span>
+    <>
+      <Breadcrumb
+        title1={itemById.title}
+        title2={itemById.categorize.title}
+        title3={itemById.title}
+        path1={itemById.categorize.path}
+      />
+      <div className={cx('wrapper')}>
+        <Container fluid="md">
+          <div className={cx('container-detail')}>
+            <Row>
+              <Col xs={12} md={5}>
+                <div className={cx('product-images')}>
+                  <Swiper
+                    style={{
+                      '--swiper-navigation-color': '#fff',
+                      '--swiper-pagination-color': '#fff',
+                    }}
+                    loop={true}
+                    spaceBetween={10}
+                    navigation={true}
+                    thumbs={{ swiper: thumbsSwiper }}
+                    modules={[FreeMode, Navigation, Thumbs]}
+                    className={cx('mySwiper-detail-parent')}
+                  >
+                    <SwiperSlide>
+                      <img src={itemById.imgUrl} alt={itemById.title} />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                    </SwiperSlide>
+                  </Swiper>
+                  <Swiper
+                    onSwiper={setThumbsSwiper}
+                    loop={true}
+                    spaceBetween={10}
+                    slidesPerView={3}
+                    freeMode={true}
+                    centeredSlides={true}
+                    watchSlidesProgress={true}
+                    modules={[FreeMode, Navigation, Thumbs]}
+                    className={cx('mySwiper-detail-child')}
+                  >
+                    <SwiperSlide>
+                      <img src={itemById.imgUrl} alt={itemById.title} />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                    </SwiperSlide>
+                  </Swiper>
+                </div>
+              </Col>
+              <Col xs={12} md={7}>
+                <div className={cx('info-item')}>
+                  <div className={cx('title-item', 'mb-30')}>
+                    <h2>{itemById.title}</h2>
+                  </div>
+                  <div className={cx('price-item', 'mb-30')}>
+                    <span>${itemById.price}</span>
+                    <del className={cx('ml-10')}>${(itemById.price * 1.1).toFixed(2)}</del>
+                    <span className={cx('badge', 'ml-10')}>-10%</span>
+                  </div>
+
+                  <div className={cx('size-item', 'mb-30')}>
+                    <span className={cx('mr-10')}>Size :</span>
+                    <div className={cx('btn-value')}>
+                      <ButtonGroup>
+                        {valueSelect.map((val, idx) => (
+                          <ToggleButton
+                            key={idx}
+                            id={`valueSelect-${idx}`}
+                            type="radio"
+                            variant={'outline-danger'}
+                            name="valueSelect"
+                            value={val.value}
+                            checked={selectValue === val.value}
+                            onChange={(e) => setSelectValue(e.currentTarget.value)}
+                            className={cx('toggle-size')}
+                          >
+                            {val.name}
+                          </ToggleButton>
+                        ))}
+                      </ButtonGroup>
+                    </div>
+                  </div>
+                  <div className={cx('quantity', 'mb-30')}>
+                    <span className={cx('mr-10')}>Quantity :</span>
+                    <div className={cx('quantity-btn')}>
+                      <button>-</button>
+                      <span className={cx('quantity-number')}>5</span>
+                      <button>+</button>
+                    </div>
+                  </div>
+                  <div className={cx('btn-add', 'mb-30')}>
+                    <div className={cx('btn-add-to-cart', 'mr-10')}>
+                      <button>Add to cart</button>
+                    </div>
+                    <div className={cx('btn-add-to-favorite')}>
+                      <button>
+                        <i className="bi bi-heart"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
           </div>
-        </div>
-      </div>
-      <Container fluid="md">
-        <div className={cx('container-detail')}>
-          <Row>
-            <Col xs={12} md={6}>
+          <div className={cx('product-detail')}>
+            <Tabs defaultActiveKey="description" id="tab-product-detail" className="justify-content-center">
+              <Tab eventKey="description" title="Description">
+                <p>{itemById.description}</p>
+              </Tab>
+              <Tab eventKey="reviews" title="Reviews">
+                <div className={cx('reviews-content')}>
+                  <div className={cx('product-reviews')}>
+                    <h2 className={cx('pr-header')}>CUSTOMER REVIEWS</h2>
+                    <div className={cx('pr-sumary')}>
+                      <span className={cx('pr-content')}>No reviews yet</span>
+                      <span className={cx('pr-newreviews')}>Write a review</span>
+                    </div>
+                  </div>
+                </div>
+              </Tab>
+              <Tab eventKey="comments" title="Comments">
+                Comment
+              </Tab>
+            </Tabs>
+          </div>
+          <div className={cx('custom-products')}>
+            <div className={cx('cp-header')}>
+              <h2 className={cx('cp-title')}>Custom Products</h2>
+              <a href="" className={cx('cp-more')}>
+                View all products <i className="bi bi-arrow-right"></i>
+              </a>
+            </div>
+            <div className={cx('cp-content')}>
               <Swiper
-                style={{
-                  '--swiper-navigation-color': '#fff',
-                  '--swiper-pagination-color': '#fff',
+                breakpoints={{
+                  480: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                  },
+                  640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                  },
+                  1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 50,
+                  },
                 }}
-                loop={true}
-                spaceBetween={10}
+                modules={[Navigation]}
                 navigation={true}
-                thumbs={{ swiper: thumbsSwiper }}
-                modules={[FreeMode, Navigation, Thumbs]}
-                className={cx('mySwiper-detail-parent')}
+                className={cx('cp-mySwiper')}
               >
-                <SwiperSlide>
-                  <img src={itemById.imgUrl} alt={itemById.title} />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </SwiperSlide>
-              </Swiper>
-              <Swiper
-                onSwiper={setThumbsSwiper}
-                loop={true}
-                spaceBetween={10}
-                slidesPerView={3}
-                freeMode={true}
-                centeredSlides={true}
-                watchSlidesProgress={true}
-                modules={[FreeMode, Navigation, Thumbs]}
-                className={cx('mySwiper-detail-child')}
-              >
-                <SwiperSlide>
-                  <img src={itemById.imgUrl} alt={itemById.title} />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </SwiperSlide>
-              </Swiper>
-            </Col>
-            <Col xs={12} md={6}>
-              <div className={cx('info-item')}>
-                <div className={cx('title-item', 'mb-30')}>
-                  <h2>{itemById.title}</h2>
-                </div>
-                <div className={cx('price-item', 'mb-30')}>
-                  <span>${itemById.price}</span>
-                  <del className={cx('ml-10')}>${(itemById.price * 1.1).toFixed(2)}</del>
-                  <span className={cx('badge', 'ml-10')}>-10%</span>
-                </div>
-
-                <div className={cx('size-item', 'mb-30')}>
-                  <span className={cx('mr-10')}>Size :</span>
-                  <div className={cx('btn-value')}>
-                    <ButtonGroup>
-                      {valueSelect.map((val, idx) => (
-                        <ToggleButton
-                          key={idx}
-                          id={`valueSelect-${idx}`}
-                          type="radio"
-                          variant={'outline-danger'}
-                          name="valueSelect"
-                          value={val.value}
-                          checked={selectValue === val.value}
-                          onChange={(e) => setSelectValue(e.currentTarget.value)}
-                          className={cx('toggle-size')}
-                        >
-                          {val.name}
-                        </ToggleButton>
-                      ))}
-                    </ButtonGroup>
-                  </div>
-                </div>
-                <div className={cx('quantity', 'mb-30')}>
-                  <span className={cx('mr-10')}>Quantity :</span>
-                  <div className={cx('quantity-btn')}>
-                    <button>-</button>
-                    <span className={cx('quantity-number')}>5</span>
-                    <button>+</button>
-                  </div>
-                </div>
-                <div className={cx('btn-add', 'mb-30')}>
-                  <div className={cx('btn-add-to-cart', 'mr-10')}>
-                    <button>Add to cart</button>
-                  </div>
-                  <div className={cx('btn-add-to-favorite')}>
-                    <button>
-                      <i className="bi bi-heart"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </div>
-        <div className={cx('product-detail')}>
-          <Tabs defaultActiveKey="description" id="tab-product-detail" className="justify-content-center">
-            <Tab eventKey="description" title="Description">
-              <p>{itemById.description}</p>
-            </Tab>
-            <Tab eventKey="reviews" title="Reviews">
-              <div className={cx('reviews-content')}>
-                <div className={cx('product-reviews')}>
-                  <h2 className={cx('pr-header')}>CUSTOMER REVIEWS</h2>
-                  <div className={cx('pr-sumary')}>
-                    <span className={cx('pr-content')}>No reviews yet</span>
-                    <span className={cx('pr-newreviews')}>Write a review</span>
-                  </div>
-                </div>
-              </div>
-            </Tab>
-            <Tab eventKey="comments" title="Comments">
-              Comment
-            </Tab>
-          </Tabs>
-        </div>
-        <div className={cx('custom-products')}>
-          <div className={cx('cp-header')}>
-            <h2 className={cx('cp-title')}>Custom Products</h2>
-            <a href="" className={cx('cp-more')}>
-              View all products <i className="bi bi-arrow-right"></i>
-            </a>
-          </div>
-          <div className={cx('cp-content')}>
-            <Swiper
-              breakpoints={{
-                480: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                640: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                768: {
-                  slidesPerView: 3,
-                  spaceBetween: 40,
-                },
-                1024: {
-                  slidesPerView: 4,
-                  spaceBetween: 50,
-                },
-              }}
-              modules={[Navigation]}
-              navigation={true}
-              className={cx('cp-mySwiper')}
-            >
-              {listItem.map((item) => (
-                <SwiperSlide key={item.id}>
-                  <div className={cx('product-wrapper')} key={item.id}>
-                    <div className={cx('product-thumb')}>
-                      <div className={cx('product-action')}>
-                        <a onClick={() => console.log('a')}>
-                          <i className="bi bi-cart2"></i>
-                        </a>
-                        <a>
-                          <i className="bi bi-search"></i>
-                        </a>
-                        <a>
-                          <i className="bi bi-arrow-clockwise"></i>
-                        </a>
-                        <a>
-                          <i className="bi bi-heart"></i>
-                        </a>
-                      </div>
-                      {item.discount && (
-                        <div className={cx('product-badge')}>
-                          <p>-{item.discount}%</p>
+                {listItem.map((item) => (
+                  <SwiperSlide key={item.id}>
+                    <div className={cx('product-wrapper')} key={item.id}>
+                      <div className={cx('product-thumb')}>
+                        <div className={cx('product-action')}>
+                          <a onClick={() => console.log('a')}>
+                            <i className="bi bi-cart2"></i>
+                          </a>
+                          <a>
+                            <i className="bi bi-search"></i>
+                          </a>
+                          <a>
+                            <i className="bi bi-arrow-clockwise"></i>
+                          </a>
+                          <a>
+                            <i className="bi bi-heart"></i>
+                          </a>
                         </div>
-                      )}
-                      <img
-                        src={item.imgUrl}
-                        alt={item.title}
-                        onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}
-                      />
-                    </div>
+                        {item.discount && (
+                          <div className={cx('product-badge')}>
+                            <p>-{item.discount}%</p>
+                          </div>
+                        )}
+                        <img
+                          src={item.imgUrl}
+                          alt={item.title}
+                          onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}
+                        />
+                      </div>
 
-                    <div className={cx('product-info')}>
-                      <h3 className={cx('product-title')}>{item.title}</h3>
-                      <div className={cx('product-price')}>
-                        <span>${item.price}</span>
+                      <div className={cx('product-info')}>
+                        <h3 className={cx('product-title')}>{item.title}</h3>
+                        <div className={cx('product-price')}>
+                          <span>${item.price}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
-        </div>
-      </Container>
-    </div>
+        </Container>
+      </div>
+    </>
   );
 }

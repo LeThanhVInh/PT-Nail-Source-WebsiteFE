@@ -83,7 +83,7 @@ export default function ProductSideBar(props) {
 
   return (
     <>
-      <div className={cx('content-header', 'overrides')}>
+      {/* <div className={cx('content-header', 'overrides')}>
         <div className={cx('input-group')}>
           <input type="text" className="form-control" placeholder="Search" aria-label="Search"></input>
           <div className={cx('input-group-append')}>
@@ -92,7 +92,7 @@ export default function ProductSideBar(props) {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className={cx('product-categorize', 'mb-30')}>
         <h3 className={cx('pc-title')}>PRODUCT CATEGORIES</h3>
         <div className={cx('pc-list-wrapper')}>
