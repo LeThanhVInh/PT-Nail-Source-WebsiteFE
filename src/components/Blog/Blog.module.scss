@@ -54,12 +54,13 @@
         justify-content: space-between;
         // width: 100%;
         flex-wrap: wrap;
+
         .blog-wrapper {
           margin-bottom: 20px;
           height: 500px;
           max-height: 100%;
+          background-color: var(--white-color);
           box-shadow: var(--box-shadow);
-          background-color: var(--white-item-bg);
           @include x-mobile {
             height: unset;
           }

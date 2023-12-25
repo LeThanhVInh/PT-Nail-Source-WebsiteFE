@@ -185,7 +185,7 @@ export default function ProductDetails({ params }) {
                   </div>
 
                   <div className={cx('size-item', 'mb-30')}>
-                    <span className={cx('mr-10')}>Size :</span>
+                    <span className={cx('mr-10')}>Size </span>
                     <div className={cx('btn-value')}>
                       <ButtonGroup>
                         {valueSelect.map((val, idx) => (
@@ -207,7 +207,7 @@ export default function ProductDetails({ params }) {
                     </div>
                   </div>
                   <div className={cx('quantity', 'mb-30')}>
-                    <span className={cx('mr-10')}>Quantity :</span>
+                    <span className={cx('mr-10')}>Quantity </span>
                     <div className={cx('quantity-btn')}>
                       <button>-</button>
                       <span className={cx('quantity-number')}>5</span>

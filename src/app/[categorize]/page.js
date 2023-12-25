@@ -133,7 +133,7 @@ export default function Categorize({ params }) {
         title2={itemByCategorize[0].categorize.title}
         path1={itemByCategorize[0].categorize.path}
       />
-      <div className={cx('wrapper')}>
+      <div className={cx('wrapper', 'mb-75')}>
         <div className={cx('main-content')}>
           <Container fluid="md">
             <Row>

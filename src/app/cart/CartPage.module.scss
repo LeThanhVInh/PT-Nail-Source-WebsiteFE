@@ -158,9 +158,9 @@ $border-color_1: #e5e5e5;
     }
     td {
       background-color: var(--white-color) !important;
-      padding-top: 30px;
-      padding-bottom: 30px;
-      padding-left: 25px;
+      // padding-top: 30px;
+      // padding-bottom: 30px;
+      // padding-left: 25px;
       text-align: center;
     }
     td.product-thumbnail {
@@ -183,15 +183,41 @@ $border-color_1: #e5e5e5;
     }
     .product-quantity {
       input {
-        width: 80%;
+        width: 40%;
       }
       .pro-qty {
+        display: flex;
         .dec,
         .inc {
           font-size: 20px;
           font-weight: 400;
+          border-radius: 50%;
+          color: var(--text-color);
+          height: 30px;
+          width: 30px;
+          background: var(--white-item-bg);
+
           &:hover {
             cursor: pointer;
+            color: var(--white-color);
+            background-color: var(--primary-bold);
+          }
+
+          button {
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 20px;
+            border: none;
+            background: var(--white-item-bg);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            transition: all 0.3s ease-out 0s;
+
+            &:hover {
+              color: var(--white-color);
+              background-color: var(--primary-bold);
+            }
           }
         }
       }
@@ -270,6 +296,7 @@ $border-color_1: #e5e5e5;
       }
     }
   }
+
   .delivery-note {
     width: 100%;
     margin-bottom: 20px;
@@ -409,4 +436,8 @@ $border-color_1: #e5e5e5;
       }
     }
   }
+}
+
+.react-datepicker__triangle {
+  left: -50px !important;
 }

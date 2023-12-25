@@ -142,7 +142,6 @@ export default function BlogDetail({ params }) {
                   </Col>
                 </Row>
               </div>
-              <Blog />
             </Col>
 
             <Col xs={12} lg={3}>
@@ -161,6 +160,8 @@ export default function BlogDetail({ params }) {
           </Row>
         </Container>
       </div>
+      <Blog />
+
       <GetDiscount />
     </>
   );

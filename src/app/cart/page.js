@@ -67,10 +67,12 @@ export default function CartPage() {
                   </td>
                   <td className={cx('product-quantity', 'pro-quantity')}>
                     <div className={cx('pro-qty', 'd-inline-block', 'mx-0', 'pt-0')}>
-                      <span className={cx('dec')}>-</span>
+                      <span className={cx('dec')}>
+                        <button>-</button>
+                      </span>
                       <input type="text" name="updates[]" defaultValue={1} totalqty={1} />
-                      <span className={cx('inc')} title="1 Translation missing: en.products.product.in_stock">
-                        +
+                      <span className={cx('inc')}>
+                        <button>+</button>
                       </span>
                     </div>
                   </td>
@@ -105,6 +107,7 @@ export default function CartPage() {
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
                 wrapperClassName={cx('date-picker')}
+                showPopperArrow={false}
               />
             </div>
 

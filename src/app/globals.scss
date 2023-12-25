@@ -13,16 +13,19 @@
 
   --desc-text: #555;
   --discount-color: #343434;
-  --box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   --box-shadow-btn: 0 5px 5px 0 rgba(0, 0, 0, 0.15);
   --box-shadow-item: 0 0px 20px 0 rgba(0, 0, 0, 0.05);
   --box-shadow-product: 0px 0px 4px 0px #00000012;
   --text-shadow: 0 0 1px #0000004a;
   --grey-bg: #f5f6f9;
-  --white-item-bg: #fafafa;
+  --white-item-bg: #f5f5f5;
   --badge-bg: #0d9a18;
 }
 
+.mb-75 {
+  margin-bottom: 75px;
+}
 /* // @media (prefers-color-scheme: dark) {
 //   :root {
 //     --foreground-rgb: 255, 255, 255;
