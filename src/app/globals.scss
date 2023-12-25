@@ -70,3 +70,11 @@ a {
      color-scheme: dark;
    }
 } */
+
+.offcanvas {
+  .header-action {
+    display: none;
+    color: red;
+    background-color: red !important;
+  }
+}
