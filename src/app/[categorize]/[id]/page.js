@@ -1,10 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 import { notFound, useRouter } from 'next/navigation';
-import Link from 'next/link';
+
 import { Container, Col, Row, ButtonGroup, ToggleButton, Tab, Tabs } from 'react-bootstrap';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import ReactImageMagnify from 'react-image-magnify';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -129,7 +130,26 @@ export default function ProductDetails({ params }) {
                     className={cx('mySwiper-detail-parent')}
                   >
                     <SwiperSlide>
-                      <img src={itemById.imgUrl} alt={itemById.title} />
+                      {/* <img src={itemById.imgUrl} alt={itemById.title} /> */}
+
+                      <div className={cx('imageMagnifyer')}>
+                        <ReactImageMagnify
+                          {...{
+                            smallImage: {
+                              alt: 'Wristwatch by Ted Baker London',
+                              width: 300,
+                              height: 300,
+                              src: itemById.imgUrl,
+                            },
+                            largeImage: {
+                              src: itemById.imgUrl,
+                              width: 1200,
+                              height: 1800,
+                            },
+                            enlargedImagePosition: 'over',
+                          }}
+                        />
+                      </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <img src="https://swiperjs.com/demos/images/nature-1.jpg" />

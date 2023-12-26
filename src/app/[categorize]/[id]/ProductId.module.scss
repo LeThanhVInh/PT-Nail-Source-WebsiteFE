@@ -60,6 +60,11 @@ $button-icon: 55px;
   .container-detail {
     padding: 100px 0;
 
+    .imageMagnifyer {
+      display: flex;
+      justify-content: center;
+    }
+
     .info-item {
       padding: 0 80px;
       @include s-tablet {
