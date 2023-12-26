@@ -1,3 +1,5 @@
+@import '@/app/import';
+
 .dropdown-menu {
   border-radius: unset !important;
   .dropdown-menu[data-bs-popper] {
@@ -8,15 +10,19 @@
 .navbar-nav .nav-link {
   color: var(--text-color);
 }
+
 .dropend .dropdown-toggle {
   color: var(--text-color);
   margin-left: 0 !important;
+  @include x-mobile {
+    margin-left: 0;
+  }
 }
 
 // .dropdown-item {
 //   &:hover {
-//     background-color: lightsalmon;
-//     color: #fff;
+//     background-color: lightsalmon !important;
+//     color: #fff !important;
 //   }
 // }
 
@@ -27,6 +33,9 @@
   min-width: 200px;
   max-width: 500px;
   position: relative;
+  @include x-mobile {
+    box-shadow: unset;
+  }
 }
 
 .dropdown:hover > .dropdown-menu,
@@ -36,21 +45,26 @@
   margin-left: 0;
 }
 
-@media screen and (min-width: 769px) {
-  .dropend:hover > .dropdown-menu {
-    position: absolute;
-    top: 0;
-    left: 100%;
-  }
-  .dropend .dropdown-toggle {
-    margin-left: 0.5em;
-  }
-}
+// .dropend:hover > .dropdown-menu {
+//   @include x-mobile {
+//     position: absolute;
+//     top: 0;
+//     // left: 100%;
+//   }
+// }
+
+// @media screen and (min-width: 768.02px) {
+//   .dropend:hover > .dropdown-menu {
+//     position: absolute;
+//     top: 0;
+//     left: 100%;
+//   }
+//   .dropend .dropdown-toggle {
+//     margin-left: 0.5em;
+//   }
+// }
 
 .offcanvas {
-  .dropdown .dropdown-menu {
-    box-shadow: unset;
-  }
   .offcanvas-title {
     font-size: 22px;
     font-weight: 700;

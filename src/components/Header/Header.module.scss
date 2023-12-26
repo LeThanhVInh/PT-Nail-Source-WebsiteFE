@@ -5,6 +5,10 @@ $height-header: 90px;
 $color_1: #fff;
 $font-family_1: 'Line Awesome Free';
 
+.mr-65 {
+  margin-right: 65px;
+}
+
 .header-contact {
   background-color: var(--primary-color);
   height: $height-header-contact;
@@ -38,10 +42,17 @@ $font-family_1: 'Line Awesome Free';
   min-height: $height-header;
   display: flex;
   align-items: center;
-  // padding: 15px 10px 25px 10px;
+
   .navbar-header {
     display: flex;
     flex-wrap: wrap;
+
+    @include s-tablet {
+      justify-content: center;
+    }
+    @include x-mobile {
+      justify-content: space-between;
+    }
     .header-logo {
       margin-bottom: 0;
       font-size: 60px;
@@ -50,87 +61,127 @@ $font-family_1: 'Line Awesome Free';
       color: var(--text-color);
     }
 
-    .btn-drop-down {
-      color: var(--text-color);
-      text-decoration: none;
-      display: block;
-      position: relative;
-      padding: 0.2em 0;
-      .span-icons {
-        &.list-title {
-          text-transform: uppercase;
-        }
-        i {
-          margin-left: 10px;
-        }
-      }
-      .nav-list-parent {
-        border-radius: none;
+    .wrap-nav-header {
+      margin-right: 65px;
 
-        .wrap-list {
-          display: flex;
-          .mega-menu {
-            padding: 10px;
+      @include s-tablet {
+        margin-right: 0;
+        width: 500px;
+      }
+      @include x-mobile {
+        margin-right: 0;
+      }
+
+      .btn-drop-down {
+        color: var(--text-color);
+        text-decoration: none;
+        display: block;
+        position: relative;
+        padding: 0.2em 0;
+
+        .span-icons {
+          &.list-title {
+            text-transform: uppercase;
+          }
+          i {
+            margin-left: 10px;
+          }
+        }
+
+        .nav-list-parent {
+          border-radius: none;
+
+          .wrap-list {
+            display: flex;
             width: 500px;
-            // padding: 10px;
-            .title {
-              font-size: 22px;
-              font-weight: 700;
-              color: var(--text-color);
-              padding-left: 15px;
-              letter-spacing: 1px;
-              margin-bottom: 20px;
-              margin-top: 10px;
+
+            // flex-wrap: wrap;
+            @include s-tablet {
+              width: 415px;
             }
-            a {
+
+            .mega-menu {
+              padding: 10px;
+              .title {
+                font-size: 22px;
+                font-weight: 700;
+                color: var(--text-color);
+                padding-left: 15px;
+                letter-spacing: 1px;
+                margin-bottom: 20px;
+                margin-top: 10px;
+              }
+              a {
+                padding: 6px 15px;
+                transition: all 0.3s ease-out 0s;
+                width: 40%;
+                &:hover {
+                  color: var(--primary-bold);
+                  background-color: transparent;
+                }
+              }
+            }
+          }
+
+          .page-list {
+            .page-item {
               padding: 6px 15px;
               transition: all 0.3s ease-out 0s;
-              width: 40%;
+              width: 100%;
+              background-color: transparent;
               &:hover {
                 color: var(--primary-bold);
                 background-color: transparent;
               }
             }
           }
-        }
-        &:nth-child(1) {
-          a {
-            // width: 100%;
-            &::after {
+
+          &:nth-child(1) {
+            a {
+              // width: 100%;
+              &::after {
+                content: '';
+                border: 0;
+                position: absolute;
+                opacity: 0;
+                display: none !important;
+              }
+            }
+
+            &::before {
               content: '';
-              border: 0;
               position: absolute;
-              opacity: 0;
-              display: none !important;
+              top: -17px;
+              left: 0;
+              width: 100%;
+              height: 20px;
+              background-color: transparent;
             }
           }
 
-          &::before {
-            content: '';
-            position: absolute;
-            top: -17px;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background-color: transparent;
-          }
-        }
-        .wrapper-list-child {
-          a {
-            text-decoration: none;
-            color: var(--text-color);
-            &:active {
-              background-color: var(--primary-color);
-              color: var(--white-color);
+          .wrapper-list-child {
+            a {
+              text-decoration: none;
+              color: var(--text-color);
+              transition: all 0.3s ease-out 0s;
+
+              &:hover {
+                color: var(--primary-color);
+                background-color: transparent;
+              }
+              &:active {
+                background-color: var(--primary-color);
+                color: var(--white-color);
+              }
             }
           }
         }
-      }
 
-      .span-icons {
-        display: flex;
-        justify-content: space-evenly;
-        padding: 0 4px;
+        .span-icons {
+          display: flex;
+          justify-content: space-evenly;
+          padding: 0 4px;
+        }
       }
     }
 
@@ -138,7 +189,8 @@ $font-family_1: 'Line Awesome Free';
       display: flex;
       align-items: center;
       color: var(--text-color);
-      @include x-mobile {
+
+      @include s-tablet {
         justify-content: center;
         width: 100%;
       }
@@ -153,13 +205,17 @@ $font-family_1: 'Line Awesome Free';
       .search-form {
         position: absolute;
         bottom: -20px;
+        right: 0;
         z-index: 5;
         background-color: var(--white-color);
         padding: 10px;
         box-shadow: var(--box-shadow);
-        @include x-mobile {
+
+        @include s-tablet {
           bottom: -50px;
+          right: unset;
         }
+
         .search-input {
           width: 200px;
         }

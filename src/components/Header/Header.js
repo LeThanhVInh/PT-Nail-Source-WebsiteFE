@@ -31,7 +31,7 @@ export default function Header() {
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>Menu</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className={cx(['justify-content-end flex-grow-1 pe-3'])}>
+                <Nav className={cx('justify-content-center', 'flex-grow-1', 'wrap-nav-header')}>
                   <NavDropdown
                     renderMenuOnMount={true}
                     title={
@@ -165,7 +165,7 @@ export default function Header() {
                     id="basic-nav-dropdown"
                     className={cx('btn-drop-down')}
                   >
-                    <NavDropdown
+                    {/* <NavDropdown
                       renderMenuOnMount={true}
                       title={
                         <span className={cx('span-icons')}>
@@ -207,7 +207,17 @@ export default function Header() {
                         <NavDropdown.Item>Contact 2</NavDropdown.Item>
                         <NavDropdown.Item>Contact 3</NavDropdown.Item>
                       </div>
-                    </NavDropdown>
+                    </NavDropdown> */}
+                    <div className={cx('nav-list-parent')}>
+                      <div className={cx('page-list')}>
+                        <Link className={cx('page-item', 'dropdown-item')} role="button" tabIndex="0" href="/contact">
+                          Contact
+                        </Link>
+                        <Link className={cx('page-item', 'dropdown-item')} role="button" tabIndex="0" href="/contact">
+                          About
+                        </Link>
+                      </div>
+                    </div>
                   </NavDropdown>
                 </Nav>
               </Offcanvas.Body>

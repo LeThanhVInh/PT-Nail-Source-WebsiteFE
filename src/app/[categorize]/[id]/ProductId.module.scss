@@ -58,7 +58,7 @@ $button-icon: 55px;
     }
   }
   .container-detail {
-    padding: 100px 0;
+    padding: 50px 0;
 
     .imageMagnifyer {
       display: flex;
@@ -69,6 +69,9 @@ $button-icon: 55px;
       padding: 0 80px;
       @include s-tablet {
         padding: 80px 40px;
+      }
+      @include mobile {
+        padding-bottom: 0;
       }
       .title-item {
         font-size: 30px;

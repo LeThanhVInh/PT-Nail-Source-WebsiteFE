@@ -139,7 +139,7 @@ $button-icon: 55px;
           @include s-tablet {
             width: calc((100% / 3 - 20px)) !important;
           }
-          @include x-mobile {
+          @include s-tablet {
             width: calc((100% / 2 - 20px)) !important;
           }
           @include mobile {

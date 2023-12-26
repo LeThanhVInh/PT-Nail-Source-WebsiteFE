@@ -111,7 +111,7 @@ export default function ProductDetails({ params }) {
         title3={itemById.title}
         path1={itemById.categorize.path}
       />
-      <div className={cx('wrapper')}>
+      <div className={cx('wrapper', 'mb-75')}>
         <Container fluid="md">
           <div className={cx('container-detail')}>
             <Row>

@@ -59,7 +59,7 @@ export default function BlogDetail({ params }) {
       <div className={cx('main-content')}>
         <Container fluid="lg">
           <Row>
-            <Col xs={12} lg={9}>
+            <Col xs={12} md={6} lg={9}>
               <div className={cx('blog-thumb')}>
                 <img src={itemById.imgUrl} />
               </div>
@@ -144,7 +144,7 @@ export default function BlogDetail({ params }) {
               </div>
             </Col>
 
-            <Col xs={12} lg={3}>
+            <Col xs={12} md={6} lg={3}>
               <div className={cx('content-header', 'overrides')}>
                 <div className={cx('input-group')}>
                   <input type="text" className="form-control" placeholder="Search" aria-label="Search"></input>

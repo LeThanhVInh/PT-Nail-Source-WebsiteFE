@@ -106,7 +106,7 @@ const customStyles = {
 
 const valueSelect = [
   { name: <i className="bi bi-grid-3x2"></i>, value: 'grid' },
-  { name: <i class="bi bi-list-task"></i>, value: 'list' },
+  { name: <i className="bi bi-list-task"></i>, value: 'list' },
 ];
 
 export default function Categorize({ params }) {
@@ -135,9 +135,9 @@ export default function Categorize({ params }) {
       />
       <div className={cx('wrapper', 'mb-75')}>
         <div className={cx('main-content')}>
-          <Container fluid="md">
+          <Container fluid="lg">
             <Row>
-              <Col xs={12} md={9}>
+              <Col xs={12} md={6} lg={9}>
                 <div className={cx('content-header')}>
                   <div className={cx('ch-container')}>
                     <h2 className={cx('ch-title')}>{itemByCategorize[0].categorize.title}</h2>
@@ -186,7 +186,7 @@ export default function Categorize({ params }) {
                   </div>
                 </div>
               </Col>
-              <Col xs={12} md={3}>
+              <Col xs={12} md={6} lg={3}>
                 <div className={cx('content-header', 'overrides')}>
                   <div className={cx('input-group')}>
                     <input type="text" className="form-control" placeholder="Search" aria-label="Search"></input>
@@ -200,7 +200,7 @@ export default function Categorize({ params }) {
               </Col>
             </Row>
             <Row>
-              <Col xs={12} md={9}>
+              <Col xs={12} md={6} lg={9}>
                 <div className={cx('main-container')}>
                   <div className={cx('product')}>
                     {itemByCategorize.map((item) => (
@@ -243,7 +243,7 @@ export default function Categorize({ params }) {
                   </div>
                 </div>
               </Col>
-              <Col xs={12} md={3}>
+              <Col xs={12} md={6} lg={3}>
                 <ProductSideBar pathName={pathName} />
               </Col>
             </Row>

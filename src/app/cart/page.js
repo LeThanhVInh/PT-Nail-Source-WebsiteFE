@@ -83,7 +83,7 @@ export default function CartPage() {
                   </td>
                   <td className={cx('product-remove', 'pro-remove')}>
                     <a href="/cart/change?line=1&quantity=0">
-                      <i class="bi bi-x-circle"></i>
+                      <i className="bi bi-x-circle"></i>
                     </a>
                   </td>
                 </tr>

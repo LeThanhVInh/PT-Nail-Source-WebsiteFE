@@ -44,7 +44,7 @@ const blogItem = [
 
 const valueSelect = [
   { name: <i className="bi bi-grid-3x2"></i>, value: 'grid' },
-  { name: <i class="bi bi-list-task"></i>, value: 'list' },
+  { name: <i className="bi bi-list-task"></i>, value: 'list' },
 ];
 
 export default function Blog() {
@@ -55,10 +55,10 @@ export default function Blog() {
     <>
       <Breadcrumb title1={'Blog'} title2={'Blog'} path1={'blog'} />
       <div className={cx('wrapper')}>
-        <div className={cx('main-content')}>
-          <Container fluid="md">
+        <div className={cx('main-content', 'mb-75')}>
+          <Container fluid="lg">
             <Row>
-              <Col xs={12} md={9}>
+              <Col xs={12} md={6} lg={9}>
                 <div className={cx('content-header')}>
                   <div className={cx('ch-container')}>
                     <h2 className={cx('ch-title')}>Blog</h2>
@@ -86,7 +86,7 @@ export default function Blog() {
                   </div>
                 </div>
               </Col>
-              <Col xs={12} md={3}>
+              <Col xs={12} md={6} lg={3}>
                 <div className={cx('content-header', 'overrides')}>
                   <div className={cx('input-group')}>
                     <input type="text" className="form-control" placeholder="Search" aria-label="Search"></input>
@@ -100,7 +100,7 @@ export default function Blog() {
               </Col>
             </Row>
             <Row>
-              <Col xs={12} md={9}>
+              <Col xs={12} md={6} lg={9}>
                 {blogItem.map((blog) => (
                   <div className={cx('blog-content')}>
                     <Row>
@@ -137,7 +137,7 @@ export default function Blog() {
                   </div>
                 ))}
               </Col>
-              <Col xs={12} md={3}>
+              <Col xs={12} md={6} lg={3}>
                 <ProductSideBar />
               </Col>
             </Row>
