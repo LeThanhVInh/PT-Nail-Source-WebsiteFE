@@ -10,7 +10,7 @@ $font-family_1: 'Line Awesome Free';
 }
 .off-canvas-wrap {
   padding-right: 65px;
-  @include s-tablet {
+  @include x-tablet {
     padding-right: 0;
   }
 }
@@ -48,11 +48,10 @@ $font-family_1: 'Line Awesome Free';
   min-height: $height-header;
   display: flex;
   align-items: center;
-
   position: sticky;
   top: 0;
   z-index: 999;
-
+  box-shadow: var(--bs-header);
   .navbar-header {
     display: flex;
     flex-wrap: wrap;
@@ -72,15 +71,21 @@ $font-family_1: 'Line Awesome Free';
     }
 
     .wrap-nav-header {
+      justify-content: center;
       align-items: center;
       margin-right: 58px;
 
-      @include s-tablet {
+      @include x-tablet {
+        justify-content: flex-end;
         margin-right: 0;
         width: 500px;
       }
+      @include s-tablet {
+        justify-content: center;
+      }
       @include x-mobile {
         margin-right: 0;
+        justify-content: center;
       }
 
       .span-icons {
@@ -208,14 +213,14 @@ $font-family_1: 'Line Awesome Free';
       align-items: center;
       color: var(--text-color);
 
-      @include s-tablet {
+      @include x-tablet {
         justify-content: center;
         width: 100%;
       }
       .account {
         margin-left: 20px;
         font-size: 26px;
-        @include s-tablet {
+        @include x-tablet {
           margin-left: 0;
         }
       }

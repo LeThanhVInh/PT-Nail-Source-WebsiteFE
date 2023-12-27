@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Button, Col, Row } from 'react-bootstrap';
@@ -51,10 +51,14 @@ export default function Header() {
   const router = useRouter();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  useEffect(() => {
+    console.log('a');
+  }, []);
+
   return (
     <>
       <header className={cx('header')}>
-        <Container fluid="md">
+        <Container fluid="lg">
           <Navbar expand="md" className={cx('navbar-header')}>
             <Link href="/" className={cx('navbar-brand', 'header-logo')}>
               Nail Shop
@@ -70,7 +74,7 @@ export default function Header() {
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>Menu</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className={cx('justify-content-center', 'flex-grow-1', 'wrap-nav-header')}>
+                <Nav className={cx('flex-grow-1', 'wrap-nav-header')}>
                   <NavDropdown
                     renderMenuOnMount={true}
                     title={

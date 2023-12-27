@@ -215,10 +215,15 @@ $button-icon: 55px;
       .product-info {
         text-align: center;
         margin: 20px 0;
-        h3 {
+        .product-title {
           font-size: 16px;
           font-weight: 600px;
           color: var(--text-color);
+          transition: all 0.3s ease-out 0s;
+
+          &:hover {
+            color: var(--primary-color);
+          }
         }
       }
     }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { Container } from 'react-bootstrap';
 import styles from '../ProductItem.module.scss';
@@ -9,6 +10,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 export default function NewProducts() {
+  const router = useRouter();
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleItemClick = (index) => {
@@ -22,32 +24,61 @@ export default function NewProducts() {
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-01-380x380.jpg',
       title: 'Body Lotions',
       price: '50',
+      categorize: {
+        title: 'Lipstick',
+        path: 'lipstick',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 2,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-08-380x380.jpg',
       title: 'Natural Lotion',
       price: '55',
-      discount: '35',
+      categorize: {
+        title: 'Makeup Bases',
+        path: 'makeup-bases',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 3,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-16-380x380.jpg',
       title: 'Beauty Cream',
       price: '60',
+      discount: '15',
+      categorize: {
+        title: 'Nail Polish',
+        path: 'nail-polish',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 4,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
       title: 'Lip Gloss',
       price: '70',
+      categorize: {
+        title: 'Skin Care',
+        path: 'skin-care',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
     {
       id: 5,
       imgUrl: 'https://beautycare.ththeme.net/wp-content/uploads/2022/04//beauty-18-380x380.jpg',
-      title: 'Lip Glosssss',
+      title: 'Lip Gloss',
       price: '66',
-      discount: '90',
+      categorize: {
+        title: 'Lipstick',
+        path: 'lipstick',
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt condimentum felis, et tempor neque rhoncus ac. Proin elementum, felis id placerat dapibus, purus ipsum lobortis tellus, ut vehicula nisl metus eget arcu.',
     },
   ];
 
@@ -93,11 +124,17 @@ export default function NewProducts() {
                     <p>-{item.discount}%</p>
                   </div>
                 )}
-                <img src={item.imgUrl} alt={item.title} />
+                <img
+                  src={item.imgUrl}
+                  alt={item.title}
+                  onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}
+                />
               </div>
 
               <div className={cx('product-info')}>
-                <h3 className={cx('product-title')}>{item.title}</h3>
+                <h3 className={cx('product-title')} onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}>
+                  {item.title}
+                </h3>
                 <div className={cx('product-price')}>
                   <span>${item.price}</span>
                 </div>
