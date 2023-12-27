@@ -8,6 +8,12 @@ $font-family_1: 'Line Awesome Free';
 .mr-65 {
   margin-right: 65px;
 }
+.off-canvas-wrap {
+  padding-right: 65px;
+  @include s-tablet {
+    padding-right: 0;
+  }
+}
 
 .header-contact {
   background-color: var(--primary-color);
@@ -43,6 +49,10 @@ $font-family_1: 'Line Awesome Free';
   display: flex;
   align-items: center;
 
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
   .navbar-header {
     display: flex;
     flex-wrap: wrap;
@@ -62,7 +72,8 @@ $font-family_1: 'Line Awesome Free';
     }
 
     .wrap-nav-header {
-      margin-right: 65px;
+      align-items: center;
+      margin-right: 58px;
 
       @include s-tablet {
         margin-right: 0;
@@ -70,6 +81,12 @@ $font-family_1: 'Line Awesome Free';
       }
       @include x-mobile {
         margin-right: 0;
+      }
+
+      .span-icons {
+        &.list-title {
+          text-transform: uppercase;
+        }
       }
 
       .btn-drop-down {
@@ -80,9 +97,9 @@ $font-family_1: 'Line Awesome Free';
         padding: 0.2em 0;
 
         .span-icons {
-          &.list-title {
-            text-transform: uppercase;
-          }
+          // &.list-title {
+          //   text-transform: uppercase;
+          // }
           i {
             margin-left: 10px;
           }
@@ -102,6 +119,7 @@ $font-family_1: 'Line Awesome Free';
 
             .mega-menu {
               padding: 10px;
+
               .title {
                 font-size: 22px;
                 font-weight: 700;
@@ -197,11 +215,15 @@ $font-family_1: 'Line Awesome Free';
       .account {
         margin-left: 20px;
         font-size: 26px;
+        @include s-tablet {
+          margin-left: 0;
+        }
       }
       .search {
         font-size: 22px;
         position: relative;
       }
+
       .search-form {
         position: absolute;
         bottom: -20px;
@@ -218,6 +240,40 @@ $font-family_1: 'Line Awesome Free';
 
         .search-input {
           width: 200px;
+          background-color: var(--white-color);
+          border-radius: 0;
+          color: var(--text-color);
+          &::placeholder {
+            color: var(--grey-color);
+            font-size: 15px;
+          }
+          .input-group-append {
+            color: var(--grey-color);
+          }
+          &:focus {
+            border-color: var(--primary-color);
+            box-shadow: unset;
+          }
+          &:hover {
+            i {
+              color: red;
+            }
+          }
+        }
+        .btn-search {
+          width: 100px;
+          background-color: var(--primary-color);
+          border-radius: 0;
+          border: none;
+          color: var(--white-color);
+          font-size: 15px;
+          @include mobile {
+            width: 100px;
+          }
+          &:hover {
+            background-color: var(--primary-bold);
+            transition: all 0.3s ease-out 0s;
+          }
         }
       }
       .cart {

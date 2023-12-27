@@ -25,7 +25,7 @@ export default function CartPage() {
   }, []);
 
   return (
-    <Container>
+    <Container className={cx('mb-75')}>
       <Row>
         <Col>
           <div className={cx('cart-table-container')}>

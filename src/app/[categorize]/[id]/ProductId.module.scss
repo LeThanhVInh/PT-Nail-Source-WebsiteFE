@@ -232,12 +232,11 @@ $button-icon: 55px;
       .product-wrapper {
         cursor: pointer;
         margin: 10px;
-
         height: auto;
         margin-bottom: 20px;
         border-radius: 10px;
-
         transition: all 0.3s ease-out 0s;
+        box-shadow: var(--box-shadow-product);
 
         &:hover {
           box-shadow: var(--box-shadow);

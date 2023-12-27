@@ -9,9 +9,47 @@ import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
+const listCategories = [
+  {
+    id: 1,
+    categorize: {
+      title: 'Lipstick',
+      path: 'lipstick',
+    },
+  },
+  {
+    id: 2,
+    categorize: {
+      title: 'Makeup Bases',
+      path: 'makeup-bases',
+    },
+  },
+  {
+    id: 3,
+    categorize: {
+      title: 'Nail Polish',
+      path: 'nail-polish',
+    },
+  },
+  {
+    id: 4,
+    categorize: {
+      title: 'Lipstick',
+      path: 'lipstick',
+    },
+  },
+  {
+    id: 5,
+    categorize: {
+      title: 'Skin Care',
+      path: 'skin-care',
+    },
+  },
+];
+
 export default function Header() {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const router = useRouter();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <>
@@ -26,6 +64,7 @@ export default function Header() {
               id={`offcanvasNavbar-expand-sm`}
               aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
               placement="end"
+              className={cx('off-canvas-wrap')}
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>Menu</Offcanvas.Title>
@@ -79,7 +118,37 @@ export default function Header() {
                     </NavDropdown>
                   </NavDropdown>
 
+                  <Link href="/about" className={cx('nav-link')}>
+                    <span className={cx('span-icons', 'list-title')}>About</span>
+                  </Link>
+
                   <NavDropdown
+                    renderMenuOnMount={true}
+                    title={
+                      <span className={cx('span-icons', 'list-title')}>
+                        Categories <i className="bi bi-chevron-down"></i>
+                      </span>
+                    }
+                    id="basic-nav-dropdown"
+                    className={cx('btn-drop-down')}
+                  >
+                    <div className={cx('nav-list-parent')}>
+                      <div className={cx('page-list')}>
+                        {listCategories.map((res) => (
+                          <Link
+                            className={cx('page-item', 'dropdown-item')}
+                            role="button"
+                            tabIndex="0"
+                            href={`/${res.categorize.path}`}
+                          >
+                            {res.categorize.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </NavDropdown>
+
+                  {/* <NavDropdown
                     renderMenuOnMount={true}
                     title={
                       <span className={cx('span-icons', 'list-title')}>
@@ -115,13 +184,13 @@ export default function Header() {
                         </div>
                       </Row>
                     </div>
-                  </NavDropdown>
+                  </NavDropdown> */}
 
                   <NavDropdown
                     renderMenuOnMount={true}
                     title={
                       <span className={cx('span-icons', 'list-title')}>
-                        Blog<i className="bi bi-chevron-down"></i>
+                        Blogs<i className="bi bi-chevron-down"></i>
                       </span>
                     }
                     id="basic-nav-dropdown"
@@ -133,7 +202,11 @@ export default function Header() {
                           <Col lg={6}>
                             <div className={cx('mega-menu')}>
                               <h2 className={cx('title')}>Blog pages</h2>
-                              <NavDropdown.Item href="#service1">Blog default</NavDropdown.Item>
+
+                              <Link className={cx('dropdown-item')} href={'/blog'}>
+                                Blogs
+                              </Link>
+
                               <NavDropdown.Item href="#service1">Blog list 2</NavDropdown.Item>
                               <NavDropdown.Item href="#service1">Blog list 3</NavDropdown.Item>
                               <NavDropdown.Item href="#service1">Blog Grid</NavDropdown.Item>
@@ -155,7 +228,11 @@ export default function Header() {
                     </div>
                   </NavDropdown>
 
-                  <NavDropdown
+                  <Link href="/contact" className={cx('nav-link')}>
+                    <span className={cx('span-icons', 'list-title')}>Contact</span>
+                  </Link>
+
+                  {/* <NavDropdown
                     renderMenuOnMount={true}
                     title={
                       <span className={cx('span-icons', 'list-title')}>
@@ -208,7 +285,7 @@ export default function Header() {
                         <NavDropdown.Item>Contact 3</NavDropdown.Item>
                       </div>
                     </NavDropdown> */}
-                    <div className={cx('nav-list-parent')}>
+                  {/* <div className={cx('nav-list-parent')}>
                       <div className={cx('page-list')}>
                         <Link className={cx('page-item', 'dropdown-item')} role="button" tabIndex="0" href="/contact">
                           Contact
@@ -218,7 +295,7 @@ export default function Header() {
                         </Link>
                       </div>
                     </div>
-                  </NavDropdown>
+                  </NavDropdown> */}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -230,15 +307,19 @@ export default function Header() {
                 <i className={cx('bi bi-search', 'ha-item')}></i>
               </div>
               {isSearchOpen ? (
-                <Form className={cx('d-flex', 'search-form')}>
-                  <Form.Control
-                    type="search"
-                    placeholder="Search..."
-                    className={cx('me-2', 'search-input')}
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button>
-                </Form>
+                <div className={cx('search-form')}>
+                  <Form className={cx('d-flex')}>
+                    <Form.Control
+                      type="search"
+                      placeholder="Search..."
+                      className={cx('me-2', 'search-input')}
+                      aria-label="Search"
+                    />
+                    <Button variant="outline-success" className={cx('btn-search')}>
+                      Search
+                    </Button>
+                  </Form>
+                </div>
               ) : null}
 
               <div className={cx('cart')} onClick={() => router.push('/cart')}>
