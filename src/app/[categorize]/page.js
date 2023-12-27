@@ -233,7 +233,12 @@ export default function Categorize({ params }) {
                         </div>
 
                         <div className={cx('product-info')}>
-                          <h3 className={cx('product-title')}>{item.title}</h3>
+                          <h3
+                            className={cx('product-title')}
+                            onClick={() => router.push(`/${item.categorize.path}/${item.id}`)}
+                          >
+                            {item.title}
+                          </h3>
                           <div className={cx('product-price')}>
                             <span>${item.price}</span>
                           </div>

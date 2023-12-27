@@ -32,7 +32,6 @@ $button-icon: 55px;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-
       .title {
         font-size: 30px;
         text-transform: uppercase;
@@ -135,7 +134,6 @@ $button-icon: 55px;
           margin-bottom: 20px;
           border-radius: 10px;
           box-shadow: var(--box-shadow-product);
-
           @include s-tablet {
             width: calc((100% / 3 - 20px)) !important;
           }
@@ -292,10 +290,14 @@ $button-icon: 55px;
           .product-info {
             text-align: center;
             margin: 20px 0;
-            h3 {
+            .product-title {
               font-size: 16px;
               font-weight: 600px;
               color: var(--text-color);
+              transition: all 0.3s ease-out 0s;
+              &:hover {
+                color: var(--primary-color);
+              }
             }
           }
         }

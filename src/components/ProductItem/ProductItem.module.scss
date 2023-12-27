@@ -58,7 +58,6 @@ $button-icon: 55px;
       margin-bottom: 20px;
       border-radius: 10px;
       box-shadow: var(--box-shadow-product);
-
       @include s-tablet {
         width: calc((100% / 3 - 20px)) !important;
       }
